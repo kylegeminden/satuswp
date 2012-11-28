@@ -1,0 +1,135 @@
+// *** TABLE OF CONTENTS ***
+// -------------------------------------------------------------------------- 
+// Following the name of each section is !n! and a 4 to 5 digit code, for
+// example !abc, which you can use find next to skip to the next section.
+// --------------------------------------------------------------------------
+
+// Color      = !clr
+// Typography = !typ
+// Table      = !tbl
+// Forms      = !frm
+
+// ==|== Color !n! !clr =========================================================
+
+@bodyBackground : @white;
+
+// color palette
+@baseColor       : #002779;   
+@compColor       : spin(@baseColor, 180); 
+@splitCompColor1 : spin(@baseColor, 157.5);
+@splitCompColor2 : spin(@baseColor, 202.5);
+@borderColor     : lighten(@baseColor, 60%);
+
+// greyscale
+@white : #fff;
+@black : #000;
+@k5  : darken(@white, 5%);
+@k10 : darken(@white, 10%);
+@k15 : darken(@white, 15%);
+@k20 : darken(@white, 20%);
+@k25 : darken(@white, 25%);
+@k30 : darken(@white, 30%);
+@k35 : darken(@white, 35%);
+@k40 : darken(@white, 40%);
+@k45 : darken(@white, 45%);
+@k50 : darken(@white, 50%);
+@k55 : darken(@white, 55%);
+@k60 : darken(@white, 60%);
+@k65 : darken(@white, 65%);
+@k70 : darken(@white, 70%);
+@k75 : darken(@white, 75%);
+@k80 : darken(@white, 80%);
+@k85 : darken(@white, 85%);
+@k90 : darken(@white, 90%);
+@k95 : darken(@white, 95%);
+
+// ==|== Typography !n! typ ====================================================
+
+// base
+@baseFont           : sans-serif;
+@baseFontSize       : 16;
+@baseFontLineHeight : 1.5;
+@baseFontColor      : darken(@white, 87%);
+@baseFontMargin     : @baseFontLineHeight * 0.75em;
+
+// headings
+@headingFont       : inherit;
+@headingFontWeight : 700;
+@headingFontColor  : inherit;
+
+// alternate font
+@altFont       : serif;
+@altLineHeight : @baseFontMargin;
+
+// links
+@linkColor        : #2BA6CB;
+@linkColorHover   : darken(@linkColor, 10%);
+@linkColorVisited : @linkColor;
+@linkColorFocus   : darken(@linkColorVisited, 10%);
+
+// text selection
+@selectionBackground : #b3d4fc;
+
+// horizontal rule
+@hrBorderColor : @k20;
+
+// mark
+@markFontColor: @black;
+@markBackground: #ff0;
+
+// blockquotes
+@blockquoteColor        : @baseFontColor;
+@blockquoteCiteColor    : @k40;
+@blockquoteCiteFontSize : 14;
+@blockquotePadding      : 0 20px 0;
+
+// pre, code, kbd, samp
+@codeFont       : Monaco, 'Courier New', monospace;
+@codeFontSize   : @baseFontSize;
+@codePadding    : 2px 4px 2px;
+@codeBackground : @k5;
+@codeBorder     : 1px solid @k20;
+@codeRadius     : 3px;
+
+// highlight
+@highlightColor : #ffff99;
+
+
+// ==|== Table !n! tbl =========================================================
+
+@tablePadding              : 8px 12px;
+@tableBackground           : @white;
+@tableTheadTfootBackground : @k10;
+@tableTrEvenBackground     : darken(@white, 4%);
+@tableHoverBackground      : darken(@white, 8%);
+@tableBorder               : 1px solid @k20;
+@tableRadius               : 6px;
+
+// ==|== Forms !n! frm =========================================================
+
+// inputs
+@placeholderColor      : @k30;
+@inputHeight           : 32px;
+@inputPadding          : 6px;
+@inputBackground       : @white;
+@inputBorder           : 1px solid @k20;
+@inputFocusBorderColor : @k30;
+@inputRadius           : 2px;
+@inputFocusBoxShadow   : inset 0 1px 4px rgba(0,0,0,0.2);
+@inputTransition       : box-shadow 0.15s 0s linear;
+// fieldsets
+@fieldsetPadding       : 10px;
+@fieldsetBorderWidth   : 1px;
+@fieldsetBorderStyle   : solid;
+@fieldsetBorderColor   : @k20;
+@fieldsetRadius        : 3px;
+// buttons
+@buttonFont            : @baseFont; 
+@buttonFontSize        : @baseFontSize; 
+@buttonFontColor       : @white;
+@buttonPadding         : 8px 16px;
+@buttonBackground      : @linkColor;
+@buttonBackgroundHover : @linkColorHover;
+@buttonBorder          : none;
+@buttonRadius          : @inputRadius;
+@buttonTransition      : background-color 0.2s 0 linear;

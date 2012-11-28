@@ -1,0 +1,93 @@
+
+.table {
+  background-color: @tableBackground;
+  border: @tableBorder;
+  border-left: none;
+  border-collapse: separate;
+}
+
+.table thead th,
+.table tfoot td {
+  font-weight: 600;
+}
+
+.table thead th {
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.table th,
+.table td {
+  padding: @tablePadding;
+  border-top: @tableBorder;
+  border-left: @tableBorder;
+  vertical-align: top;
+  .transition(background-color .25s 0 linear)
+}
+
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+  background-color: @tableHoverBackground;
+}
+
+.table caption + thead tr:first-child th,
+.table caption + tbody tr:first-child th,
+.table caption + tbody tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + tbody tr:first-child th,
+.table colgroup + tbody tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table tbody:first-child tr:first-child th,
+.table tbody:first-child tr:first-child td{
+  border-top: none;
+}
+
+.table thead,
+.table tfoot {
+  background-color: @tableTheadTfootBackground;
+}
+
+.table tr.even,
+.table tr.alt {
+  background-color: @tableTrEvenBackground;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: @tableTrEvenBackground;
+}
+
+// Uncomment if radius cornered table is needed
+
+// .table {
+//   border-radius: @tableRadius;
+// }
+
+// .table caption + thead tr:first-child th:first-child,
+// .table caption + tbody tr:first-child td:first-child,
+// .table colgroup + thead tr:first-child th:first-child,
+// .table colgroup + tbody tr:first-child td:first-child,
+// .table thead:first-child tr:first-child th:first-child,
+// .table tbody:first-child tr:first-child td:first-child {
+//   .border-radius(@tableRadius 0 0 0);
+// }
+
+// .table caption + thead tr:first-child th:last-child,
+// .table caption + tbody tr:first-child td:last-child,
+// .table colgroup + thead tr:first-child th:last-child,
+// .table colgroup + tbody tr:first-child td:last-child,
+// .table thead:first-child tr:first-child th:last-child,
+// .table tbody:first-child tr:first-child td:last-child {
+//   .border-radius(0 @tableRadius 0 0);
+// }
+
+// .table thead:last-child tr:last-child th:first-child,
+// .table tbody:last-child tr:last-child td:first-child,
+// .table tfoot:last-child tr:last-child td:first-child{
+//   .border-radius(0 0 0 @tableRadius);
+// }
+
+// .table thead:last-child tr:last-child th:last-child,
+// .table tbody:last-child tr:last-child td:last-child,
+// .table tfoot:last-child tr:last-child td:last-child {
+//   .border-radius(0 0 @tableRadius 0);
+// }

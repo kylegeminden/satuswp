@@ -1,0 +1,113 @@
+
+.fieldset {
+  padding: @fieldsetPadding;
+  .bordered(@fieldsetBorderWidth, @fieldsetBorderStyle, @fieldsetBorderColor);
+  .border-radius(@fieldsetRadius);
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+}
+
+::-webkit-input-placeholder {
+  color: @placeholderColor;
+}
+
+:-moz-placeholder {
+  color: @placeholderColor;
+}
+
+:-ms-input-placeholder {
+  color: @placeholderColor;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="datetime"],
+input[type="date"],
+input[type="time"],
+select[multiple="multiple"],
+select,
+textarea {
+  margin: 0 0 (@baseFontMargin * 0.75);
+  padding: @inputPadding;
+  background: @inputBackground;
+  border: @inputBorder;
+  .border-radius(@inputRadius);
+  .transition(@inputTransition);
+  outline-style: none;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="datetime"],
+input[type="date"],
+input[type="time"],
+select {
+  height: @inputHeight;
+}
+
+select[multiple="multiple"] {
+  height: auto;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="datetime"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+select[multiple="multiple"]:focus,
+textarea:focus {
+  border-color: @inputFocusBorderColor;
+  .box-shadow(@inputFocusBoxShadow);
+}
+
+// For iOS
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+textarea {
+  -webkit-appearance: none;
+}
+
+/* buttons */
+
+.button {
+  display: inline-block;
+  padding: @buttonPadding;
+  background: @buttonBackground;
+  border: @buttonBorder;
+  .border-radius(@buttonRadius);
+  font-family: @buttonFont;
+  .font-size(@buttonFontSize);
+  line-height: 1;
+  text-decoration: none;
+  color: @buttonFontColor;
+  .transition(@buttonTransition);
+  -webkit-appearance: none;
+}
+
+.button:hover {
+  background: @buttonBackgroundHover;
+  color: @buttonFontColor;
+}

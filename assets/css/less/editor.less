@@ -1,0 +1,135 @@
+/*
+Theme Name:         Satus
+Description:        Used to style the TinyMCE editor
+*/
+
+/*
+  *** TABLE OF CONTENTS ***
+  --------------------------------------------------------------------------  
+  Following the name of each section is !n! and a 4 to 5 digit code, for
+  example !abc, which you can use find next to skip to the next section.
+  --------------------------------------------------------------------------
+
+  Reset             = !rst
+  Normalize         = !nrml
+  Typography        = !typ
+  Tables            = !tbl
+  Forms             = !frm
+  Modules           = !mdl
+  Global Styles     = !gbl
+  Editor Styles     = !edt
+  Helper classes    = !hlp
+*/
+
+@import "variables";
+@import "mixins";
+
+/* =============================================================================
+   Reset !n! !rst
+   ========================================================================== */
+
+@import "reset";
+
+
+/* =============================================================================
+   Normalize !n! !nrml
+   ========================================================================== */
+
+@import "normalize";
+
+/* =============================================================================
+   Typography !n! !typ
+   ========================================================================== */
+
+@import "typography";
+
+/* =============================================================================
+   Tables -n- !tbl
+   ========================================================================== */
+
+@import "tables";
+
+/* =============================================================================
+   Forms !n! !frm 
+   ========================================================================== */
+
+@import "forms";
+
+/* =============================================================================
+   Modules !n! !mdl  
+   ========================================================================== */
+
+@import "modules";
+
+/* =============================================================================
+   Global Styles !n! !glb
+   ========================================================================== */
+
+@import "global";
+
+/* =============================================================================
+   Editor Styles !n! !edt
+   ========================================================================== */
+
+html {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+body {
+
+}
+
+/* figure and image float alignment */
+.wp-caption {
+  border: none;
+  text-align: center;
+  background-color: transparent;
+  padding-top: 0;
+  margin: 0;
+  .border-radius(0);
+}
+
+.wp-caption-dd {
+  font-size: .85em;
+  line-height: 1.4;
+  padding: 0;
+  margin: 0;
+}
+
+img.alignright,
+img.alignleft,
+.wp-caption.alignleft,
+.wp-caption.alignright {
+  display: block;
+}
+
+img.aligncenter,
+.wp-caption.aligncenter {
+  display: block;
+  margin: 0 auto @baseFontMargin;
+}
+
+img.alignnone,
+.wp-caption.alignnone {
+  display: block;
+  margin: 0 0 @baseFontMargin !important;
+}
+
+img.alignleft,
+.wp-caption.alignleft {
+  float: left;
+  margin: .4em @baseFontMargin  @baseFontMargin 0;
+}
+
+img.alignright,
+.wp-caption.alignright {
+  float: right;
+  margin: .4em 0 @baseFontMargin @baseFontMargin;
+}
+
+/* ==========================================================================
+   Helper Classes !n! !hlp
+   ========================================================================== */
+
+@import "helpers";

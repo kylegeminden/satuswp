@@ -1,0 +1,166 @@
+
+html {
+  font-size: 62.5%;
+}
+
+// body is for tiny mce editor styles
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: @baseFont;
+  color: @baseFontColor;
+}
+
+body {
+  .font-size(@baseFontSize);
+  line-height: @baseFontLineHeight;
+  word-wrap: break-word;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: @headingFont;
+  font-weight: @headingFontWeight;
+  text-rendering: optimizelegibility;
+  color: @headingFontColor;
+}
+
+h1, .h1 {
+  .font-size(32);
+  line-height : 1.2;
+  margin-bottom: @baseFontLineHeight * 0.4em;
+}
+
+h2, .h2 {
+  .font-size(24);
+  line-height : 1.2;
+  margin-bottom: @baseFontLineHeight * 0.5em;
+}
+
+h3, .h3 {
+  .font-size(21);
+  line-height: 1.3;
+  margin-bottom: @baseFontLineHeight * 0.55em;
+}
+
+h4, .h4 {
+  .font-size(18);
+  line-height: 1.25;
+  margin-bottom: @baseFontLineHeight * 0.75em;
+}
+
+h5, .h5 {
+  .font-size(16);
+  margin-bottom: @baseFontLineHeight * 0.75em;
+}
+
+h6, .h6 {
+  .font-size(14);
+  margin-bottom: @baseFontLineHeight * 0.8em;
+}
+
+p,
+menu,
+figure,
+fieldset,
+ul,ol,dl,
+blockquote,
+table,
+form,
+pre,
+hr {
+  margin-bottom: @baseFontMargin;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-bottom: 0;
+}
+
+a {
+  color: @linkColor;
+  text-decoration: none;
+  &:hover {
+    color: @linkColorHover;
+  }
+  // &:visited {
+  //  color: @linkColorVisited;
+  // }
+  &:focus {
+    color: @linkColorFocus;
+    outline: thin dotted;
+  }
+}
+
+::-moz-selection {
+  background: @selectionBackground;
+  text-shadow: none;
+}
+
+::selection {
+  background: @selectionBackground;
+  text-shadow: none;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+dt {
+  font-weight: 700;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid @hrBorderColor;
+}
+
+mark {
+  background: @markBackground;
+  color: @markFontColor;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: @codeFont;
+  .font-size(@codeFontSize);
+  // padding: @codePadding;
+  // background: @codeBackground;
+  // border: @codeBorder;
+  // .border-radius(@codeRadius);
+}
+
+blockquote {
+  color: @blockquoteColor;
+  padding: @blockquotePadding;
+}
+
+blockquote p {
+  margin-bottom: @baseFontMargin * 0.25;
+}
+
+blockquote small,
+blockquote cite {
+  .font-size(@blockquoteCiteFontSize);
+  font-style: normal;
+  color: @blockquoteCiteColor;
+}
+
+blockquote small:before {
+  content: "\2014";
+  padding-right: 3px;
+}
