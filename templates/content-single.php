@@ -13,16 +13,10 @@
   <footer>
     <?php satus_paged_nav(); ?>
     <div class="meta">
-      <dl class="section tags">
+      <dl class="section">
         <dt><?php _e('Tags:', 'satus'); ?></dt>
         <dd property="articleSection">
-          <?php the_tags('', ', ', ''); ?>
-        </dd>
-      </dl>
-      <dl class="section cats">
-        <dt><?php _e('Posted in:', 'satus'); ?></dt>
-        <dd property="articleSection">
-          <?php echo get_the_category_list( __( ', ', 'satus' ) ); ?>
+          <?php the_tags('<ul><li>', '</li><li>', '</li></ul>'); ?>
         </dd>
       </dl>
     </div>

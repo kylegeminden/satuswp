@@ -19,23 +19,16 @@
   <?php endif; ?>
 
   <?php if ( has_tag() ) : ?>
-  <dl class="section tags">
+  <dl class="section">
     <dt><?php _e('Tags:', 'satus'); ?></dt>
     <dd property="articleSection">
-      <?php the_tags('', ', ', ''); ?>
+      <?php the_tags('<ul><li>', '</li><li>', '</li></ul>'); ?>
     </dd>
   </dl>
   <?php endif; ?>
   
-  <dl class="section cats">
-    <dt><?php _e('Posted in:', 'satus'); ?></dt>
-    <dd property="articleSection">
-      <?php echo get_the_category_list( __( ', ', 'satus' ) ); ?>
-    </dd>
-  </dl>
-  
   <?php if (comments_open()) : ?>
-  <dl class="actions">
+  <dl class="comment-count">
     <dt><?php _e('Comments:', 'satus'); ?></dt>
     <dd>
       <span property="UserComments"><?php comments_number('0', '1', '%'); ?></span> <span><?php
