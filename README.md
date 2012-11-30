@@ -1,6 +1,6 @@
 # [Satus Framework for WordPress](http://satusframework.com/) 
 
-Satus Framework for WordPress is a minimalist, [LESS](http://lesscss.org/) powered, mobile first responsive theme for developers based off of [Satus Framework](http://satusframework.com/) and inspired from [Roots Theme](https://github.com/retlehs/roots).
+Satus Framework for WordPress is a minimalist, [LESS](http://lesscss.org/) powered, mobile first responsive theme for developers based off of [Satus Framework](http://satusframework.com/) and inspired from [Roots Theme](http://rootstheme.com).
 
 Satus Framework is based off of the [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate).
 
