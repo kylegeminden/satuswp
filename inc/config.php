@@ -53,8 +53,9 @@ function satus_typeof(){
   elseif ( CONTACE_PAGE_ID !== '' && is_page( CONTACE_PAGE_ID ) ) echo 'vocab="http://schema.org/" typeof="ContactPage"';
   elseif ( is_search() ) echo 'vocab="http://schema.org/" typeof="SearchResultsPage"';
   elseif ( is_author() ) echo 'vocab="http://schema.org/" typeof="ProfilePage"';
+  elseif ( 'page' == get_post_type() ) echo 'vocab="http://schema.org/" typeof="WebPage"';
   elseif ( 'post' == get_post_type() ) echo 'vocab="http://schema.org/" typeof="Blog"';
-  else echo 'vocab="http://schema.org/" typeof="WebPage"';
+  else;
 }
 endif;
 
