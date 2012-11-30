@@ -784,6 +784,17 @@ body {
 .meta dd {
   margin-left: 5px;
 }
+.meta .section ul,
+.meta .section li {
+  display: inline;
+  padding-left: 0;
+}
+.meta .section li {
+  margin-left: 7px;
+}
+.meta .section li:first-child {
+  margin-left: 0;
+}
 .post .abstract {
   margin-bottom: 1.125em;
   *zoom: 1;
