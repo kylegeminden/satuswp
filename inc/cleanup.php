@@ -86,26 +86,13 @@ add_filter('get_bloginfo_rss', 'mad_remove_default_description');
  * Removes the following items out of the <head>
  * @link wpengineer.com/1438/wordpress-header/
 */
-// links to the extra feeds such as category feeds
-remove_action( 'wp_head', 'feed_links_extra', 3 );
-// links to the general feeds: Post and Comment Feed
-remove_action( 'wp_head', 'feed_links', 2 );
-// link to the Really Simple Discovery service endpoint, EditURI link
-remove_action( 'wp_head', 'rsd_link' );
-// link to the Windows Live Writer manifest file.
-remove_action( 'wp_head', 'wlwmanifest_link' );
-// index link
-remove_action( 'wp_head', 'index_rel_link' );
-// prev link
-remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
-// start link
-remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
-// Display relational links for the posts adjacent to the current post.
-remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
-// Display the XHTML generator that is generated on the wp_head hook, WP version
-remove_action( 'wp_head', 'wp_generator' );
-// Display shortlink http://domain.com/?p=39
-remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
+remove_action('wp_head', 'feed_links', 2);
+remove_action('wp_head', 'feed_links_extra', 3);
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+remove_action('wp_head', 'wp_generator');
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 /**
  * Remove the WordPress version from RSS feeds
