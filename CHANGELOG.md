@@ -10,3 +10,9 @@
 * Put tags in a `ul`.
 * Updated `page-header.php` based on Roots Theme.
 * Edited `satus_typeof()` tag condition in `config.php`. Made it so the else statement returns nothing and if on the post type of page it returns `typeof="WebPage"`.
+
+### 1.0.2 December 11, 2012
+
+* Fixed css table of content comments as some were `-n-` instead of `!n!`.
+* Updated head cleanup in `cleanup.php`.
+* Removed post type check in feed link in `head.php` as it was not needed.
