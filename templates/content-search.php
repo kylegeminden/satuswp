@@ -12,7 +12,7 @@
   <div class="abstract" property="description">
     <?php if ( has_post_thumbnail()) : ?>
       <a class="<?php echo POST_THUMB_CLASSES ?>" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-        <?php the_post_thumbnail('thumbnail'); ?>
+        <?php the_post_thumbnail('thumbnail', 'property=image'); ?>
       </a>
     <?php endif; ?>
     <?php satus_the_excerpt( POST_EXCERPT_LENGTH ); ?>
