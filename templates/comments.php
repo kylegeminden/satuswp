@@ -114,7 +114,7 @@
       </form>
 
     <?php endif; // if registration required and not logged in ?>
-
+    
   </section>
   <!-- /#respond -->
 <?php endif; ?>
