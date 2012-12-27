@@ -1,5 +1,5 @@
 <footer id="footer" role="contentinfo">
-  <section>
+  <section class="row expand">
 
     <h2 class="assistive-text"><?php _e( 'Footer', 'satus' ); ?></h2>
     
