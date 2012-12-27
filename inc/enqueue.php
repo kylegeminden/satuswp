@@ -1,37 +1,7 @@
 <?php
 
-/**
- * Modified from @link gist.github.com/2567027
- * Add support for non IE conditional comments
- *
- * Trac ticket: @link core.trac.wordpress.org/ticket/16118
- *
- * Usage:
- * After registering or enqueuing a script you need to append the CC to the style
- * handle via the $wp_styles class:
- *
- * $wp_styles->add_data( 'my-handle', 'notie_conditional', '!IE' );
- *
- *  string $tag    The <link> tag to the CSS file
- *  string $handle The handle the style was registerd with
- *
- * string    Returns the link tag for output
- */
-add_filter( 'style_loader_tag', 'style_loader_tag_ccs', 10, 2 );
-function style_loader_tag_ccs( $tag, $handle ) {
-  global $wp_styles;
-  $obj = $wp_styles->registered[ $handle ];
-  if ( isset( $obj->extra[ 'notie_conditional' ] ) && $obj->extra[ 'notie_conditional' ] ) {
-    $cc = "<!--[if {$obj->extra['notie_conditional']}]><!-->\n";
-    $end_cc = "<!--<![endif]-->\n";
-    $tag = $cc . $tag . $end_cc;
-  }
-  return $tag;
-}
-
 /** 
  * @link wp.smashingmagazine.com/2011/10/12/developers-guide-conflict-free-javascript-css-wordpress/
- * @link wordpress.stackexchange.com/questions/48581/enqueue-different-stylesheets-using-ie-conditionals 
 */
 
 /**
@@ -39,26 +9,16 @@ function style_loader_tag_ccs( $tag, $handle ) {
 */
 function satus_register_styles(){
   wp_register_style(
-    'satus-main-css', //handle
-    get_stylesheet_directory_uri().'/assets/css/main.css', //source
+    'satus-css', //handle
+    get_stylesheet_directory_uri().'/assets/css/satus.css', //source
     null, // dependencies
     null // version
   );
   wp_register_style(
-    'satus-main-css-ie',
-    get_stylesheet_directory_uri().'/assets/css/main-ie.css',
-    null,
-    null
-  );
-  $GLOBALS['wp_styles']->add_data(
-    'satus-main-css',
-    'notie_conditional', // is a custom non-wp conditional comment
-    'gte IE 9' // the conditional comment
-  ); 
-  $GLOBALS['wp_styles']->add_data(
-    'satus-main-css-ie',
-    'conditional', // is a conditional comment
-    'IE 8'
+    'satus-app-css', //handle
+    get_stylesheet_directory_uri().'/assets/css/app.css', //source
+    null, // dependencies
+    null // version
   );
 }
 add_action('init', 'satus_register_styles');
@@ -68,8 +28,8 @@ add_action('init', 'satus_register_styles');
 */
 function satus_enqueue_styles(){
   if (!is_admin()):
-    wp_enqueue_style('satus-main-css');
-    wp_enqueue_style('satus-main-css-ie');
+    wp_enqueue_style('satus-css');
+    wp_enqueue_style('satus-app-css');
   endif;
 }
 add_action('wp_enqueue_scripts', 'satus_enqueue_styles', 100);
