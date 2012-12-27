@@ -18,14 +18,13 @@ add_shortcode('field', 'satus_field_func');
  * @link alistapart.com/articles/creating-intrinsic-ratios-for-video/ 
  * @link graphicbeacon.com/web-design-development/embed-an-iframe-into-a-post-or-page-without-using-a-plugin/
 */
-
 // YouTube
 function satus_youtube_shortcode($atts) {
 extract(shortcode_atts(array( 
 'id'   => 'YE7VzlLtp-4',
 'ratio'   => ''
 ), $atts)); 
-return '<div class="fluid-video '.$ratio.'"><iframe src="http://www.youtube.com/embed/'.$id.'?wmode=opaque" frameborder="0" width="560" height="315" allowfullscreen></iframe></div>'; 
+return '<div class="flex-video '.$ratio.'"><iframe src="http://www.youtube.com/embed/'.$id.'?wmode=opaque" frameborder="0" width="560" height="315" allowfullscreen></iframe></div>'; 
 }
 add_shortcode('youtube','satus_youtube_shortcode');
 
@@ -35,7 +34,7 @@ extract(shortcode_atts(array(
 'id'   => '6284199',
 'ratio'   => ''
 ), $atts)); 
-return '<div class="fluid-video vimeo '.$ratio.'"><iframe src="http://player.vimeo.com/video/'.$id.'?title=0&amp;byline=0&amp;portrait=0;wmode=opaque;" frameborder="0" width="560" height="315" webkitAllowFullScreen allowFullScreen></iframe></div>'; 
+return '<div class="flex-video vimeo '.$ratio.'"><iframe src="http://player.vimeo.com/video/'.$id.'?title=0&amp;byline=0&amp;portrait=0;wmode=opaque;" frameborder="0" width="560" height="315" webkitAllowFullScreen allowFullScreen></iframe></div>'; 
 } 
 add_shortcode('vimeo','satus_vimeo_shortcode');
 
@@ -43,7 +42,7 @@ add_shortcode('vimeo','satus_vimeo_shortcode');
  * This allows for adding custom wrapper html tags with attributes
  * [html tag="article" atr='class="cool"']
  * [close-html tag="article"]
- */
+*/
 function satus_html($atts) {
   extract(shortcode_atts(array(
     'tag' => '',
@@ -52,6 +51,7 @@ function satus_html($atts) {
     return '<'.$tag.' '.$atr.'>'; 
 }
 add_shortcode('html','satus_html');
+
 function satus_close_html($atts) {
   extract(shortcode_atts(array(
     'tag'   => ''
@@ -59,5 +59,72 @@ function satus_close_html($atts) {
     return '</'.$tag.'>'; 
 }
 add_shortcode('close-html','satus_close_html');
+
+/**
+ * Grid Shortcodes
+ * [row class='test']
+ * [end-row]
+ * [span col='6' class='test']
+ * [end-span]
+*/
+function satus_row($atts) {
+  extract(shortcode_atts(array(
+    'class' => ''
+  ), $atts)); 
+    return '<div class="'.$class.' row">'; 
+}
+add_shortcode('row','satus_row');
+
+function satus_end_row() {
+    return '</div>'; 
+}
+add_shortcode('end-row','satus_end_row');
+
+function satus_span($atts) {
+  extract(shortcode_atts(array(
+    'class' => '',
+    'col'   => '6'
+  ), $atts)); 
+    return '<div class="'.$class.' span'.$col.'">'; 
+}
+add_shortcode('span','satus_span');
+
+function satus_end_span() {
+    return '</div>'; 
+}
+add_shortcode('end-span','satus_end_span');
+
+/**
+ * Shortcode Select Box
+ * @link wpsnipp.com/index.php/functions-php/add-custom-media_buttons-for-shortcode-selection/
+ * @link http://wpsnipp.com/index.php/functions-php/update-automatically-create-media_buttons-for-shortcode-selection/
+*/
+add_action('media_buttons','add_satus_sc_select',11);
+function add_satus_sc_select(){
+  echo '&nbsp;<select id="sc_select">
+    <option selected>Shortcodes</option>
+    <option value="[row class=&quot;&quot;]">[row]</option>
+    <option value="[end-row]">[end-row]</option>
+    <option value="[span col=&quot;6&quot; class=&quot;&quot;]">[span]</option>
+    <option value="[end-span]">[end-span]</option>
+    <option value="[html tag=&quot;section&quot; atr=&#39;id=&quot;test&quot;&#39;]">[html]</option>
+    <option value="[close-html tag=section]">[close-html]</option>
+    <option value="[youtube id=&quot;YE7VzlLtp-4&quot; ratio=&quot;widescreen&quot;]">[youtube]</option>
+    <option value="[vimeo id=&quot;6284199&quot; ratio=&quot;widescreen&quot;]">[vimeo]</option>
+    <option value="[field name=&quot;custom-field-name&quot;]">[field]</option>
+  </select>';
+}
+add_action('admin_head', 'satus_sc_button_js');
+
+function satus_sc_button_js() {
+  echo '<script>
+    jQuery(document).ready(function(){
+      jQuery("#sc_select").change(function() {
+        send_to_editor(jQuery("#sc_select :selected").val());
+        return false;
+      });
+    });
+  </script>';
+}
 
 ?>
