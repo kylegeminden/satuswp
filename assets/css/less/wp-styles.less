@@ -1,0 +1,227 @@
+/* == search and password form == */
+
+.search-form label,
+.protected-post-form label {
+  .visuallyhidden();
+}
+
+.protected-post-form .button {
+  margin-left: 4px;
+}
+
+/* == posts, pages, and search results == */
+
+.post header {
+  margin-bottom: @baseFontMargin;
+}
+
+.meta {
+  margin-bottom: @baseFontMargin;
+}
+
+.meta dl {
+  margin-bottom: 0;
+}
+
+.meta dt,
+.meta dd {
+  display: inline-block;
+}
+
+.meta dd {
+  margin-left: 5px;
+}
+
+.meta .section ul,
+.meta .section li {
+  display: inline;
+  padding-left: 0;
+}
+
+.meta .section li {
+  margin-left: 7px;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.post .abstract { 
+  margin-bottom: @baseFontMargin;
+  .clearfix();
+  p { margin: 0; }
+}
+
+.post.summary .thumb {
+  float: left;
+  // width and max-width fix ie8 issue
+  width: 100%;
+  max-width: 150px;
+  margin: 0.3em @baseFontMargin 0 0;
+}
+
+.pagination {
+  margin-bottom: @baseFontMargin;
+  .clearfix();
+}
+
+.pagination a,
+.pagination span { 
+  float: left;
+  display: block;
+  padding: 2px
+}
+
+/* == comments == */
+
+.bypostauthor {}
+
+/* http://www.456bereastreet.com/archive/201105/styling_ordered_list_numbers/ */
+.comment-list {
+  counter-reset: li;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.comment-list li {
+  list-style:none;
+  position: relative;
+  padding-top: 5px;
+  border-top: 1px dashed @k20;
+}
+
+.comment-list .children li {
+  padding-left: 25px;
+}
+
+.comment-list .children li:before {
+  content: "\2191";
+  .font-size(24);
+  color: @k20;
+  position: absolute;
+  left: 0;
+}
+
+.comment {
+  margin-bottom: @baseFontMargin;
+}
+
+.comment header {
+  margin-bottom: @baseFontMargin;
+  .clearfix();
+}
+
+.comment-list li .comment header:before {
+  content: counter(li);
+  counter-increment: li;
+  .font-size(24);
+  font-weight: 400;
+  font-family: sans-serif;
+  text-align: center;
+  color: @k20;
+  display: block;
+  float: right;
+  .box-sizing();
+}
+
+.comment header .avatar {
+  float: left;
+  margin-right: 15px;
+}
+
+.comment header h3 {
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+.comment header h3 cite {
+  .font-size(20);
+  font-style: normal;
+}
+
+.comment header h3 time {
+  .font-size(16);
+  font-weight: 400;
+  display: block;
+}
+
+.comment header a:hover {
+  color: @linkColorHover;
+} 
+
+.comment-edit-link {
+  clear: both;
+  display: block;
+  padding-top: 5px;}
+
+.comment [property="commentText"] {
+  clear: both;
+}
+
+#comment-form {
+  .form-allowed-tags code {
+    display: block;
+  }
+  .label {
+    display: block;
+    label {
+      display: inline-block;
+    }
+    span {
+      color: #a72c2c;
+    }
+  }
+  textarea#comment {
+    max-width: 400px;
+  }
+}
+
+#comment-form input[type=text],
+#comment-form input[type=email],
+#comment-form input[type=url] {
+  max-width: 400px;
+}
+
+/* == author == */
+
+.author .bio .avatar {
+  float: left;
+  margin: .4em @baseFontMargin @baseFontMargin 0;
+}
+
+.author .bio {
+  .clearfix();
+}
+
+/* == Images and Figures == */
+
+.alignleft {
+  float: left;
+  margin: 0.3em @baseFontMargin @baseFontMargin 0;
+}
+
+.alignright {
+  float: right;
+  margin: 0.3em 0 @baseFontMargin @baseFontMargin;
+}
+
+.alignnone,
+.aligncenter {
+  display: block;
+}
+
+.alignnone {
+  margin: 0 0 @baseFontMargin;
+}
+
+.aligncenter {
+  margin: 0 auto @baseFontMargin;
+}
+
+/* == default wp gallery == */
+
+.gallery {
+  .nobullet();
+}
+.gallery-caption {
+  .visuallyhidden();
+}
