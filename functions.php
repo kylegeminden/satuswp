@@ -32,6 +32,11 @@ add_editor_style('assets/css/editor.css');
 */
 add_theme_support('post-thumbnails');
 
+/** 
+ * adds rss feed links to the head
+*/
+add_theme_support('automatic-feed-links');
+
 /**
  * add nav menu support
 */
