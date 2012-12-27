@@ -4,6 +4,21 @@
  * The satus_typeof tag is located in config for easy modification
 */
 
+/**
+ * #main and #sidebar CSS classes
+*/
+function satus_main_class() {
+  if (satus_display_sidebar()) {
+    $class = MAIN_CLASSES;
+  } else {
+    $class = MAIN_FULL_WIDTH_CLASSES;
+  }
+  return $class;
+}
+function satus_sidebar_class() {
+  return SIDEBAR_CLASSES;
+}
+
 /*
 * Truncate title on recent posts widget etc.,
 * use the following tag in desired template file()s to shorten title length <?php satus_short_title(20) ?>
