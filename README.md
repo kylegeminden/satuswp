@@ -19,9 +19,9 @@ I've opted to keep this theme minimal and as close to WordPress' default functio
 * Custom template tags and shortcodes.
 * Supports child themes.
 * Nav menu supports description and contains classes and data attributes for Twitter Bootstrap's dropdowns if needed.
-* [Posts pagination]((http://wp-snippets.com/pagination-without-plugin/)) from [WP-Snippets](http://wp-snippets.com/).
-* Included page template with sample typography and form elements for quick styling.
-* Included page template with grid examples and documentaion.
+* [Posts pagination]((http://wp-snippets.com/pagination-without-plugin/) from [WP-Snippets](http://wp-snippets.com/).
+* Included page template `page-elements.php` with sample typography and form elements for quick styling.
+* Included page template `page-grid.php` with grid examples and documentaion.
 
 ### HTML and CSS
 
@@ -52,7 +52,7 @@ See `inc/config.php` to enable and disable theme functionality, define constants
 
 * `[youtube id="YE7VzlLtp-4" ratio="widescreen"]` `[vimeo id="6284199" ratio="widescreen"]` Use these YouTube and Vimeo shortcodes for fuid videos. If ratio="widescreen" is not used it defaults to 4:3.
 * `[field name="name-of-your-custom-field"]` Add iframes, image maps, html etc, via custom fields and this shortcode.
-* `[html tag="article" atr='class="cool"']` `[close-html tag="article"]` This allows for adding custom wrapper html tags with attributes.
+* `[html tag="article" atr='class="cool"']` `[close-html tag="article"]` This allows for adding custom wrapper html tags with attributes. To properly use thes make sure they are on lines/paragraphs by themselves.
 * `[row class=""]`, `[end-row]`, `[span col="6" class=""]`, `[end-span]` For using the grid in the editor. To properly use thes make sure they are on lines/paragraphs by themselves.
 
 ## Child Theme Minimum Required Folders and Files
