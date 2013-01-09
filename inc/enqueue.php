@@ -72,19 +72,11 @@ function satus_enqueue_scripts(){
   if (!is_admin()):
     wp_enqueue_script('satus-plugins-js');
     wp_enqueue_script('satus-main-js');
+    if (is_single() && comments_open() && get_option('thread_comments')) {
+      wp_enqueue_script('comment-reply');
+    }
   endif; //!is_admin
 }
 add_action('wp_enqueue_scripts', 'satus_enqueue_scripts', 100);
-
-/**
- * Enable threaded comments
-*/
-function satus_enable_threaded_comments(){
-  if (!is_admin()) {
-    if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
-      wp_enqueue_script('comment-reply');
-    }
-}
-add_action('get_header', 'satus_enable_threaded_comments');
 
 ?>
