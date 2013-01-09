@@ -18,7 +18,7 @@
           <?php printf(__('<cite property="creator">%s</cite>', 'satus'), get_comment_author_link()) ?>
           <time property="commentTime" datetime="<?php echo comment_date('c') ?>">
               <a property="replyToUrl" href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>">
-                <?php printf(__('%1$s', 'satus'), get_comment_date(),  get_comment_time()); ?>
+                <?php printf(__('%s <span>%s</span> ', 'satus'), get_comment_date(),  get_comment_time()); ?>
               </a>
           </time>
         </h3>
