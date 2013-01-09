@@ -159,8 +159,11 @@ body {
   padding-top: 5px;
   border-top: 1px dashed #cccccc;
 }
+.comment-list .children {
+  padding-left: 30px;
+}
 .comment-list .children li {
-  padding-left: 25px;
+  padding-left: 30px;
 }
 .comment-list .children li:before {
   content: "\2191";
@@ -200,13 +203,10 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.comment header .avatar {
-  float: left;
-  margin-right: 15px;
-}
+.comment header .avatar,
 .comment header h3 {
   float: left;
-  margin: 0 15px 0 0;
+  margin-right: 15px;
 }
 .comment header h3 cite {
   font-size: 20px;
@@ -322,5 +322,21 @@ body {
     float: none;
     display: block;
     margin: 0 auto 1.125em;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .comment-list .children {
+    padding-left: 10px;
+  }
+  .comment-list .children li {
+    padding-left: 20px;
+  }
+  .comment header .avatar,
+  .comment header h3 {
+    float: none;
+    margin: 3px 0 0;
+  }
+  .comment header h3 time span {
+    display: block;
   }
 }
