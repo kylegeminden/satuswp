@@ -64,8 +64,8 @@ add_shortcode('close-html','satus_close_html');
  * Grid Shortcodes
  * [row class='test']
  * [end-row]
- * [span col='6' class='test']
- * [end-span]
+ * [column width='1of3' class='test']
+ * [end-column]
 */
 function satus_row($atts) {
   extract(shortcode_atts(array(
@@ -80,19 +80,19 @@ function satus_end_row() {
 }
 add_shortcode('end-row','satus_end_row');
 
-function satus_span($atts) {
+function satus_column($atts) {
   extract(shortcode_atts(array(
     'class' => '',
-    'col'   => '6'
+    'width'   => '1of2'
   ), $atts)); 
-    return '<div class="'.$class.' span'.$col.'">'; 
+    return '<div class="'.$class.' column width'.$width.'">'; 
 }
-add_shortcode('span','satus_span');
+add_shortcode('column','satus_column');
 
-function satus_end_span() {
+function satus_end_column() {
     return '</div>'; 
 }
-add_shortcode('end-span','satus_end_span');
+add_shortcode('end-column','satus_end_column');
 
 /**
  * Shortcode Select Box
@@ -105,8 +105,8 @@ function add_satus_sc_select(){
     <option selected>Shortcodes</option>
     <option value="[row class=&quot;&quot;]">[row]</option>
     <option value="[end-row]">[end-row]</option>
-    <option value="[span col=&quot;6&quot; class=&quot;&quot;]">[span]</option>
-    <option value="[end-span]">[end-span]</option>
+    <option value="[column width=&quot;1of2&quot; class=&quot;&quot;]">[column]</option>
+    <option value="[end-column]">[end-column]</option>
     <option value="[html tag=&quot;section&quot; atr=&#39;id=&quot;test&quot;&#39;]">[html]</option>
     <option value="[close-html tag=section]">[close-html]</option>
     <option value="[youtube id=&quot;YE7VzlLtp-4&quot; ratio=&quot;widescreen&quot;]">[youtube]</option>
