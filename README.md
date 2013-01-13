@@ -33,7 +33,7 @@ I've opted to keep this theme minimal and as close to WordPress' default functio
 * Minimal styling.
 * Fluid videos.
 * Includes [Less](http://lesscss.org/) files.
-* Grid system inspired from Zurb's [Foundation 3](http://foundation.zurb.com/).
+* Grid system inspired from [Object Oriented CSS Framework](https://github.com/stubbornella/oocss/tree/master/core/grid).
 * Responsive Helpers from [Twitter Bootstrap](http://twitter.github.com/bootstrap/).
 * Fix for [iPhone viewport scale bug](http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/).
 * Favicon, touch icons, Windows 8 tile.
@@ -52,8 +52,8 @@ See `inc/config.php` to enable and disable theme functionality, define constants
 
 * `[youtube id="YE7VzlLtp-4" ratio="widescreen"]` `[vimeo id="6284199" ratio="widescreen"]` Use these YouTube and Vimeo shortcodes for fuid videos. If ratio="widescreen" is not used it defaults to 4:3.
 * `[field name="name-of-your-custom-field"]` Add iframes, image maps, html etc, via custom fields and this shortcode.
-* `[html tag="article" atr='class="cool"']` `[close-html tag="article"]` This allows for adding custom wrapper html tags with attributes. To properly use thes make sure they are on lines/paragraphs by themselves.
-* `[row class=""]`, `[end-row]`, `[span col="6" class=""]`, `[end-span]` For using the grid in the editor. To properly use thes make sure they are on lines/paragraphs by themselves.
+* `[html tag="article" atr='class="cool"']` `[close-html tag="article"]` This allows for adding custom wrapper html tags with attributes. To properly use these make sure they are on lines/paragraphs by themselves.
+* `[row class=""]`, `[end-row]`, `[column width="1of2" class=""]`, `[end-column]` For using the grid in the editor. To properly use these make sure they are on lines/paragraphs by themselves.
 
 ## Child Theme Minimum Required Folders and Files
 

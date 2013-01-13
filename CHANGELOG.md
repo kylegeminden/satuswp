@@ -9,7 +9,7 @@
 * Added ability to add classes to gallery `ul`, `#main`, `#sidebar` and post thumbnail.
 * Added text to protected post form in `config.php`.
 * Added grid shortcodes and shortcode select box.
-* Updated `enqueue.php` to load `satus.css` and `app.css`. Removed not-ie conditional function as it was no longer needed.
+* Updated `enqueue.php` to load `satus.css` and `app.css`. Removed not-ie conditional function as it was no longer needed and fixed bug with comment reply script not loading.
 * Added automatic feed link support in `functions.php`.
 * Made it so all links get put in the `head` except for the WordPress version generator.
 
