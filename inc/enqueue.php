@@ -9,16 +9,16 @@
 */
 function satus_register_styles(){
   wp_register_style(
-    'satus-css', //handle
+    'satus', //handle
     get_stylesheet_directory_uri().'/assets/css/satus.css', //source
     null, // dependencies
-    null // version
+    null  // version
   );
   wp_register_style(
-    'satus-app-css', //handle
-    get_stylesheet_directory_uri().'/assets/css/app.css', //source
-    null, // dependencies
-    null // version
+    'satus-app',
+    get_stylesheet_directory_uri().'/assets/css/app.css',
+    null,
+    null
   );
 }
 add_action('init', 'satus_register_styles');
@@ -28,8 +28,8 @@ add_action('init', 'satus_register_styles');
 */
 function satus_enqueue_styles(){
   if (!is_admin()):
-    wp_enqueue_style('satus-css');
-    wp_enqueue_style('satus-app-css');
+    wp_enqueue_style('satus');
+    wp_enqueue_style('satus-app');
   endif;
 }
 add_action('wp_enqueue_scripts', 'satus_enqueue_styles', 100);
