@@ -286,10 +286,28 @@ body {
   margin: 0 auto 1.125em;
 }
 /* == default wp gallery == */
-.gallery {
+#main .gallery {
+  margin: 0 -10px;
+  padding: 0;
   list-style: none;
 }
-.gallery-caption {
+#main .gallery li {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+#main .gallery li:nth-child(4n+1) {
+  clear: both;
+}
+#main .gallery li a {
+  display: block;
+}
+#main .gallery li a img {
+  width: 100%;
+}
+#main .gallery li .caption {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
