@@ -1,6 +1,6 @@
 <footer id="footer" role="contentinfo">
-  <section class="row">
-    <div class="column width1of1">
+  <div class="row">
+    <section class="column width1of1">
 
       <h2 class="assistive-text"><?php _e( 'Footer', 'satus' ); ?></h2>
       
@@ -26,8 +26,8 @@
       <p class="copyright"><small>&copy; <?php echo date('Y');?> <?php bloginfo('name'); ?></small></p>
       <p class="design-by">design by <a href="#">Your Design Company</a></p>
 
-    </div>
-  </section>
+    </section>
+  </div>
 </footer>
 <!-- /#footer -->
 
