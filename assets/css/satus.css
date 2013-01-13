@@ -176,6 +176,10 @@ embed {
   max-width: 100%;
   height: auto;
 }
+#map_canvas img,
+.map_canvas img {
+  max-width: none!important;
+}
 /* flexible/responsive videos */
 /* http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/ */
 .flex-video {
@@ -275,8 +279,8 @@ table {
 html {
   font-size: 62.5%;
 }
-body,
 html,
+body,
 button,
 input,
 select,
@@ -368,14 +372,14 @@ ol ul {
   margin-bottom: 0;
 }
 a {
-  color: #2ba6cb;
+  color: #d2411e;
   text-decoration: none;
 }
 a:hover {
-  color: #2284a1;
+  color: #a53318;
 }
 a:focus {
-  color: #2284a1;
+  color: #a53318;
   outline: thin dotted;
 }
 ::-moz-selection {
@@ -420,7 +424,12 @@ samp {
   border-radius: 3px;
 }
 pre {
+  display: inline-block;
   padding: 5px;
+}
+pre ol {
+  margin-bottom: 0;
+  padding-right: 15px;
 }
 blockquote {
   color: #212121;
@@ -648,7 +657,7 @@ textarea {
 .button {
   display: inline-block;
   padding: 8px 16px;
-  background: #2ba6cb;
+  background: #d2411e;
   border: none;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -667,249 +676,69 @@ textarea {
   -webkit-appearance: none;
 }
 .button:hover {
-  background: #2284a1;
+  background: #a53318;
   color: #ffffff;
 }
 /* =============================================================================
    Grid !n! !grd
    ========================================================================== */
 .row {
-  max-width: 1170px;
-  min-width: 768px;
-  margin: 0 auto;
   padding: 0 15px;
+  *zoom: 1;
 }
-.row.expand {
-  padding: 0 30px;
+.row:before,
+.row:after {
+  content: "";
+  display: table;
 }
-.row.collapse {
-  padding: 0;
-}
-.row.collapse [class*="span"] {
-  padding: 0;
+.row:after {
+  clear: both;
 }
 .row .row {
-  min-width: 0;
   margin: 0 -15px;
   padding: 0;
 }
-.row .row.expand {
-  padding: 0 30px;
-  margin: 0 -30px;
-}
-.row .row.collapse {
-  margin: 0;
-}
-.row .row.small {
-  margin: 0 -6px;
-}
-.row .row.small [class*="span"],
-.row .row.small [class*="blockgrid"] > li {
-  padding: 0 6px;
-}
-[class*="span"] {
+.column {
   float: left;
   min-height: 1px;
   padding: 0 15px;
 }
-[class*="span"].center {
-  float: none;
-  margin: 0 auto;
-}
-.span12 {
+.width1of1 {
   width: 100%;
 }
-.span11 {
-  width: 91.66666666666667%;
+.width1of2 {
+  width: 50%;
 }
-.span10 {
-  width: 83.33333333333334%;
+.width1of3 {
+  width: 33.33333%;
 }
-.span9 {
+.width2of3 {
+  width: 66.66666%;
+}
+.width1of4 {
+  width: 25%;
+}
+.width3of4 {
   width: 75%;
 }
-.span8 {
-  width: 66.66666666666667%;
-}
-.span7 {
-  width: 58.333333333333336%;
-}
-.span6 {
-  width: 50%;
-}
-.span5 {
-  width: 41.66666666666667%;
-}
-.span4 {
-  width: 33.333333333333336%;
-}
-.span3 {
-  width: 25%;
-}
-.span2 {
-  width: 16.666666666666668%;
-}
-.span1 {
-  width: 8.333333333333334%;
-}
-.offset12 {
-  margin-left: 100%;
-}
-.offset11 {
-  margin-left: 91.66666666666667%;
-}
-.offset10 {
-  margin-left: 83.33333333333334%;
-}
-.offset9 {
-  margin-left: 75%;
-}
-.offset8 {
-  margin-left: 66.66666666666667%;
-}
-.offset7 {
-  margin-left: 58.333333333333336%;
-}
-.offset6 {
-  margin-left: 50%;
-}
-.offset5 {
-  margin-left: 41.66666666666667%;
-}
-.offset4 {
-  margin-left: 33.333333333333336%;
-}
-.offset3 {
-  margin-left: 25%;
-}
-.offset2 {
-  margin-left: 16.666666666666668%;
-}
-.offset1 {
-  margin-left: 8.333333333333334%;
-}
-[class*="blockgrid"] {
-  margin: 0 -10px;
-  padding: 0;
-  list-style: none;
-}
-[class*="blockgrid"] > li {
-  float: left;
-  padding: 0 10px;
-  line-height: 1;
-}
-.blockgrid6 > li {
-  width: 16.666666666666668%;
-}
-.blockgrid6 > li:nth-child(6n+1) {
-  clear: both;
-}
-.blockgrid5 > li {
+.width1of5 {
   width: 20%;
 }
-.blockgrid5 > li:nth-child(5n+1) {
-  clear: both;
+.width2of5 {
+  width: 40%;
 }
-.blockgrid4 > li {
-  width: 25%;
+.width3of5 {
+  width: 60%;
 }
-.blockgrid4 > li:nth-child(4n+1) {
-  clear: both;
-}
-.blockgrid3 > li {
-  width: 33.333333333333336%;
-}
-.blockgrid3 > li:nth-child(3n+1) {
-  clear: both;
-}
-.blockgrid2 > li {
-  width: 50%;
-}
-.blockgrid2 > li:nth-child(2n+1) {
-  clear: both;
-}
-.blockgrid1 > li {
-  width: 100%;
-}
-.blockgrid1 > li:nth-child(1n+1) {
-  clear: both;
-}
-.row,
-[class*="span"],
-[class*="blockgrid"] {
-  *zoom: 1;
-}
-.row:before,
-[class*="span"]:before,
-[class*="blockgrid"]:before,
-.row:after,
-[class*="span"]:after,
-[class*="blockgrid"]:after {
-  content: "";
-  display: table;
-}
-.row:after,
-[class*="span"]:after,
-[class*="blockgrid"]:after {
-  clear: both;
+.width4of5 {
+  width: 80%;
 }
 @media only screen and (max-width: 767px) {
   .row {
-    min-width: 0;
     padding: 0;
   }
-  .row.expand {
-    padding: 0 20px;
-  }
-  .row .row,
-  .row.small,
-  [class*="blockgrid"],
-  .row .row.small [class*="blockgrid"],
-  .row .row.small [class*="blockgrid"].mobile {
-    margin: 0 -20px;
-  }
-  [class*="span"],
-  [class*="offset"],
-  [class*="blockgrid"] > li {
-    float: none;
+  [class*="width"] {
     width: auto;
-    margin: 0;
-    padding: 0 20px;
-  }
-  [class*="span"][class*="mobile"],
-  [class*="blockgrid"].mobile > li {
-    float: left;
-    padding: 0 20px;
-  }
-  [class*="span"].mobile4 {
-    width: 100%;
-  }
-  [class*="span"].mobile3 {
-    width: 75%;
-  }
-  [class*="span"].mobile2 {
-    width: 50%;
-  }
-  [class*="span"].mobile1 {
-    width: 25%;
-  }
-  .blockgrid6.mobile > li {
-    width: 16.666666666666668%;
-  }
-  .blockgrid5.mobile > li {
-    width: 20%;
-  }
-  .blockgrid4.mobile > li {
-    width: 25%;
-  }
-  .blockgrid3.mobile > li {
-    width: 33.333333333333336%;
-  }
-  .blockgrid2.mobile > li {
-    width: 50%;
-  }
-  .blockgrid1.mobile > li {
-    width: 100%;
   }
 }
 /* ==========================================================================
@@ -926,7 +755,7 @@ textarea {
   content: "";
   display: block;
   width: 0;
-  height: 100%;
+  height: 150%;
 }
 /* Hide from both screenreaders and browsers: h5bp.com/u */
 .hidden {
@@ -975,10 +804,10 @@ textarea {
   background: #ffff99;
 }
 /* Floats */
-.pull-right {
+.right {
   float: right;
 }
-.pull-left {
+.left {
   float: left;
 }
 /* Lists */

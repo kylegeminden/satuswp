@@ -175,6 +175,10 @@ embed {
   max-width: 100%;
   height: auto;
 }
+#map_canvas img,
+.map_canvas img {
+  max-width: none!important;
+}
 /* flexible/responsive videos */
 /* http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/ */
 .flex-video {
@@ -274,8 +278,8 @@ table {
 html {
   font-size: 62.5%;
 }
-body,
 html,
+body,
 button,
 input,
 select,
@@ -367,14 +371,14 @@ ol ul {
   margin-bottom: 0;
 }
 a {
-  color: #2ba6cb;
+  color: #d2411e;
   text-decoration: none;
 }
 a:hover {
-  color: #2284a1;
+  color: #a53318;
 }
 a:focus {
-  color: #2284a1;
+  color: #a53318;
   outline: thin dotted;
 }
 ::-moz-selection {
@@ -419,7 +423,12 @@ samp {
   border-radius: 3px;
 }
 pre {
+  display: inline-block;
   padding: 5px;
+}
+pre ol {
+  margin-bottom: 0;
+  padding-right: 15px;
 }
 blockquote {
   color: #212121;
@@ -647,7 +656,7 @@ textarea {
 .button {
   display: inline-block;
   padding: 8px 16px;
-  background: #2ba6cb;
+  background: #d2411e;
   border: none;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -666,7 +675,7 @@ textarea {
   -webkit-appearance: none;
 }
 .button:hover {
-  background: #2284a1;
+  background: #a53318;
   color: #ffffff;
 }
 /* ==========================================================================
@@ -683,7 +692,7 @@ textarea {
   content: "";
   display: block;
   width: 0;
-  height: 100%;
+  height: 150%;
 }
 /* Hide from both screenreaders and browsers: h5bp.com/u */
 .hidden {
@@ -732,10 +741,10 @@ textarea {
   background: #ffff99;
 }
 /* Floats */
-.pull-right {
+.right {
   float: right;
 }
-.pull-left {
+.left {
   float: left;
 }
 /* Lists */
