@@ -3,8 +3,8 @@ html {
   font-size: 62.5%;
 }
 
-body, //for tiny mce editor
 html,
+body, // for tiny mce editor
 button,
 input,
 select,
@@ -145,7 +145,12 @@ samp {
 }
 
 pre {
+  display: inline-block;
   padding: @prePadding;
+  ol {
+    margin-bottom: 0;
+    padding-right: 15px;
+  }
 }
 
 blockquote {

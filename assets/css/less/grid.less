@@ -1,28 +1,5 @@
-// Grid Inspired from Foundation 3
-// http://foundation.zurb.com/
-
-// ==================== 
-// ** Grid Variables **
-// ====================
-
 // Use even numbers
-@rowMaxWidth            : 1170;
-@rowMinWidth            : 768;
-@columnsTotal           : 12;
-@columnGutterWidth      : 30;
-@columnSmallGutterWidth : 12;
-@mobileColumnsTotal     : 4;
-@mobileGutterWidth      : 20;
-@blockGridsTotal        : 6;
-@blockGridGutterWidth   : 20;
-
-@totalRowMaxWidth    : @rowMaxWidth * 1px;
-@totalRowMinWidth    : @rowMinWidth * 1px;
-@mobileMaxWidthQuery : (@rowMinWidth - 1) * 1px;
-@columnGutter        : (@columnGutterWidth / 2) * 1px;
-@columnSmallGutter   : (@columnSmallGutterWidth / 2) * 1px;
-@mobileGutter        : @mobileGutterWidth * 1px;
-@blockGridGutter     : (@blockGridGutterWidth / 2) * 1px;
+@columnGutter : 15px;
 
 // Clearfix - Contain floats: h5bp.com/q
 .cf() {
@@ -37,267 +14,32 @@
   }
 }
 
-// =================== 
-// ** Semantic Grid **
-// ===================
-
-.makeRow() {
-  max-width: @totalRowMaxWidth;
-  min-width: @totalRowMinWidth;
-  margin: 0 auto;
+.row {
   padding: 0 @columnGutter;
-}
-
-.makeNestedRow() {
-  min-width: 0;
-  margin: 0 -@columnGutter;
-  padding: 0;
-}
-
-.makeSmallNestedRow() {
-  min-width: 0;
-  margin: 0 -@columnSmallGutter;
-  padding: 0;
-}
-
-.makeMobileRow() {
-  margin: 0 -@mobileGutter;
-}
-
-.makeColumns() {
-  float: left;
-  min-height: 1px;
-  padding: 0 @columnGutter;
-}
-
-.makeSmallColumns() {
-  float: left;
-  min-height: 1px;
-  padding: 0 @columnSmallGutter;
-}
-
-.makeMobileColumns() {
-  float: left;
-  padding: 0 @mobileGutter;
-}
-
-// .makeColumn(3)
-.makeColumn(@x) {
-  width:  (100 / @columnsTotal) * @x * 1%;
-}
-
-.makeMobileColumn(@x) {
-  width: (100 / @mobileColumnsTotal) * @x * 1%;
-}
-
-.makeOffset(@x) {
-  margin-left: (100 / @columnsTotal) * @x * 1%;
-}
-
-// .makeBlockGrid(3)
-.makeBlockGrid(@x) {
-  margin: 0 -@blockGridGutter;
-  padding: 0;
-  list-style: none;
-  > li {
-    float: left;
-    width: (100 / @x) * 1%;
-    padding: 0 @blockGridGutter;
-    line-height: 1;
-  }
-  (~"> li:nth-child(@{x}n+1)") {
-    clear: both;
-  }
-}
-
-.makeSmallBlockGrid(@x) {
-  margin: 0 -@columnSmallGutter;
-  padding: 0;
-  list-style: none;
-  > li {
-    float: left;
-    width: (100 / @x) * 1%;
-    padding: 0 -@columnSmallGutter;
-    line-height: 1;
-  }
-  (~"> li:nth-child(@{x}n+1)") {
-    clear: both;
-  }
-}
-
-.makeMobileBlockGrid(@x) {
-  margin: 0 -@mobileGutter;
-  > li {
-    float: left;
-    padding: 0 @mobileGutter;
-  }
-}
-
-// ======================== 
-// ** Grid CSS Generator **
-// ========================
-
-// generator inspired from twitter bootstrap's
-// http://twitter.github.com/bootstrap/
-
-.gridGenerator() {
-
-  .spanX(@index) when (@index > 0) {
-    (~".span@{index}") { .span(@index); }
-    .spanX(@index - 1);
-  }
-  .spanX(0) {}
-
-  .offsetX(@index) when (@index > 0) {
-    (~".offset@{index}") { .offset(@index); }
-    .offsetX(@index - 1);
-  }
-  .offsetX(0) {}
-
-  .mobileSpanX(@index) when (@index > 0) {
-    (~'[class*="span"].mobile@{index}') { .mobileSpan(@index); }
-    .mobileSpanX(@index - 1);
-  }
-  .mobileSpanX(0) {}
-
-  .blockX(@index) when (@index > 0) {
-    (~".blockgrid@{index} > li") { .block(@index); }
-    (~".blockgrid@{index} > li:nth-child(@{index}n+1)") { clear: both; }
-    .blockX(@index - 1 );
-  }
-  .blockX(0) {}
-
-  .mobileBlockX(@index) when (@index > 0) {
-    (~".blockgrid@{index}.mobile > li") { .block(@index); }
-    .mobileBlockX(@index - 1 );
-  }
-  .mobileBlockX(0) {}
-
-  .offset(@x) {
-    margin-left: (100 / @columnsTotal) * @x * 1%;
-  }
-
-  .span(@x) {
-    width:  (100 / @columnsTotal) * @x * 1%;
-  }
-
-  .block(@x) {
-    width: (100 / @x) * 1%;
-  }
-
-  .mobileSpan(@x) {
-    width:  (100 / @mobileColumnsTotal) * @x * 1%;
-  }
-
+  .cf();
   .row {
-    max-width: @totalRowMaxWidth;
-    min-width: @totalRowMinWidth;
-    margin: 0 auto;
-    padding: 0 @columnGutter;
-    &.expand {
-      padding: 0 (@columnGutterWidth * 1px);
-    }
-    &.collapse {
-      padding: 0;
-      [class*="span"] {
-        padding: 0;
-      }
-    }
-    .row {
-      min-width: 0;
-      margin: 0 -@columnGutter;
-      padding: 0;
-      &.expand {
-        padding: 0 (@columnGutterWidth * 1px);
-        margin: 0 -(@columnGutter * 2);
-      }
-      &.collapse {
-        margin: 0;
-      }
-      &.small {
-        margin: 0 -@columnSmallGutter;
-        [class*="span"],
-        [class*="blockgrid"] > li {
-          padding: 0 @columnSmallGutter;
-        }
-      }
-    }
-  }
-
-  [class*="span"] {
-    float: left;
-    min-height: 1px;
-    padding: 0 @columnGutter;
-    &.center {
-      float: none;
-      margin: 0 auto;
-    }
-  }
-
-  // generate spans and offsets
-  .spanX(@columnsTotal);
-  .offsetX(@columnsTotal);
-
-  [class*="blockgrid"] {
-    margin: 0 -@blockGridGutter;
+    margin: 0 -@columnGutter;
     padding: 0;
-    list-style: none;
-    > li {
-      float: left;
-      padding: 0 @blockGridGutter;
-      line-height: 1;
-    }
   }
-
-  // generate block grids
-  .blockX(@blockGridsTotal);
-
-  .row,
-  [class*="span"],
-  [class*="blockgrid"] {
-    .cf();
-  }
-
-  @media only screen and (max-width: @mobileMaxWidthQuery) {
-
-    .row {
-      min-width: 0;
-      padding: 0;
-      &.expand {
-        padding: 0 @mobileGutter;
-      }
-    }
-
-    .row .row,
-    .row.small,
-    [class*="blockgrid"],
-    .row .row.small [class*="blockgrid"],
-    .row .row.small [class*="blockgrid"].mobile {
-      margin: 0 -@mobileGutter;
-    }
-
-    [class*="span"],
-    [class*="offset"],
-    [class*="blockgrid"] > li {
-      float: none;
-      width: auto;
-      margin: 0;
-      padding: 0 @mobileGutter;
-    }
-
-    [class*="span"][class*="mobile"],
-    [class*="blockgrid"].mobile > li {
-      float: left;
-      padding: 0 @mobileGutter;
-    }
-
-    // generate mobile columns
-    .mobileSpanX(@mobileColumnsTotal);
-
-    // generate mobile block grids
-    .mobileBlockX(@blockGridsTotal);
-
-  }
-
 }
-// End Grid Generator
+
+.column {
+  float: left;
+  min-height: 1px;
+  padding: 0 @columnGutter;
+}
+.width1of1{width:100%;}
+.width1of2{width:50%;}
+.width1of3{width:33.33333%;}
+.width2of3{width:66.66666%;}
+.width1of4{width:25%;}
+.width3of4{width:75%;}
+.width1of5{width:20%;}
+.width2of5{width:40%;}
+.width3of5{width:60%;}
+.width4of5{width:80%;}
+
+@media only screen and (max-width: 767px) {
+  .row{padding:0;}
+  [class*="width"]{width: auto;}
+}
