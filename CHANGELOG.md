@@ -1,6 +1,6 @@
 ### HEAD
 
-### 1.5.0
+### 1.5.0 January 13, 2013
 
 * Applied 1.5.0 changes from [satushtml](https://github.com/kylegeminden/satushtml).
 * Added any needed wrappers and classes for grid.
