@@ -36,7 +36,7 @@ I've opted to keep this theme minimal and as close to WordPress' default functio
 * Grid system inspired from [Object Oriented CSS Framework](https://github.com/stubbornella/oocss/tree/master/core/grid).
 * Responsive Helpers from [Twitter Bootstrap](http://twitter.github.com/bootstrap/).
 * Fix for [iPhone viewport scale bug](http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/).
-* Favicon, touch icons, Windows 8 tile.
+* Favicon and touch icons.
 
 ## Configuration
 
