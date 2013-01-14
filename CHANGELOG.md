@@ -1,6 +1,23 @@
-### 1.0.0 November 27, 2012
+### HEAD
 
-* Initial Release
+### 1.5.0 January 13, 2013
+
+* Applied 1.5.0 changes from [satushtml](https://github.com/kylegeminden/satushtml).
+* Added any needed wrappers and classes for grid.
+* Added page template `page-grid.php`. Contains grid examples and documentation.
+* Renamed page template `page-satusframework.php` to `page-elements.php`.
+* Added ability to add classes to gallery `ul`, `#main`, `#sidebar` and post thumbnail.
+* Added text to protected post form in `config.php`.
+* Added grid shortcodes and shortcode select box.
+* Updated `enqueue.php` to load `satus.css` and `app.css`. Removed not-ie conditional function as it was no longer needed and fixed bug with comment reply script not loading.
+* Added automatic feed link support in `functions.php`.
+* Made it so all links get put in the `head` except for the WordPress version generator.
+
+### 1.0.2 December 11, 2012
+
+* Fixed css table of content comments as some were `-n-` instead of `!n!`.
+* Updated head cleanup in `cleanup.php`.
+* Removed post type check in feed link in `head.php` as it was not needed.
 
 ### 1.0.1 November 29, 2012
 
@@ -11,8 +28,6 @@
 * Updated `page-header.php` based on Roots Theme.
 * Edited `satus_typeof()` tag condition in `config.php`. Made it so the else statement returns nothing and if on the post type of page it returns `typeof="WebPage"`.
 
-### 1.0.2 December 11, 2012
+### 1.0.0 November 27, 2012
 
-* Fixed css table of content comments as some were `-n-` instead of `!n!`.
-* Updated head cleanup in `cleanup.php`.
-* Removed post type check in feed link in `head.php` as it was not needed.
+* Initial Release

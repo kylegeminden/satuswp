@@ -3,9 +3,8 @@ html {
   font-size: 62.5%;
 }
 
-// body is for tiny mce editor styles
 html,
-body,
+body, // for tiny mce editor
 button,
 input,
 select,
@@ -138,10 +137,20 @@ kbd,
 samp {
   font-family: @codeFont;
   .font-size(@codeFontSize);
-  // padding: @codePadding;
-  // background: @codeBackground;
-  // border: @codeBorder;
-  // .border-radius(@codeRadius);
+  color: @codeFontColor;
+  padding: @codePadding;
+  background: @codeBackground;
+  border: @codeBorder;
+  .border-radius(@codeRadius);
+}
+
+pre {
+  display: inline-block;
+  padding: @prePadding;
+  ol {
+    margin-bottom: 0;
+    padding-right: 15px;
+  }
 }
 
 blockquote {

@@ -1,56 +1,8 @@
-/* ==|== Base base !n! ======================================================= */
-
-html {
-  overflow-y: scroll;
-}
-
-body {
-  background: @bodyBackground;
-}
-
-.chromeframe {
-  margin : 0.2em 0; 
-  padding : 0.2em 0;
-  color : @black; 
-  background: @k40;
-}
-
-.assistive-text {
-  .visually-hidden();
-}
-
-/* Navigation ul */
-.nav {
-  .clearfix;
-}
-
-/* ==|== Header hdr !n! ====================================================== */
-
-#header {
-
-}
-
-#brand {
-
-}
-
-#primary-nav {
-
-}
-
-/* ==|== Content cnt !n! ===================================================== */
-
-#content {
-  .clearfix();
-}
-
-/* ==|== Main main !n! ======================================================= */
-
 /* == search and password form == */
 
 .search-form label,
 .protected-post-form label {
-  .visually-hidden();
+  .visuallyhidden();
 }
 
 .protected-post-form .button {
@@ -58,14 +10,6 @@ body {
 }
 
 /* == posts, pages, and search results == */
-
-#main {
-  .clearfix();
-}
-
-.page-header {
-
-}
 
 .post header {
   margin-bottom: @baseFontMargin;
@@ -109,6 +53,9 @@ body {
 
 .post.summary .thumb {
   float: left;
+  // width and max-width fix ie8 issue
+  width: 100%;
+  max-width: 150px;
   margin: 0.3em @baseFontMargin 0 0;
 }
 
@@ -142,8 +89,12 @@ body {
   border-top: 1px dashed @k20;
 }
 
+.comment-list .children {
+  padding-left: 30px;
+}
+
 .comment-list .children li {
-  padding-left: 25px;
+  padding-left: 30px;
 }
 
 .comment-list .children li:before {
@@ -176,14 +127,10 @@ body {
   .box-sizing();
 }
 
-.comment header .avatar {
-  float: left;
-  margin-right: 15px;
-}
-
+.comment header .avatar,
 .comment header h3 {
   float: left;
-  margin: 0 15px 0 0;
+  margin-right: 15px;
 }
 
 .comment header h3 cite {
@@ -247,47 +194,52 @@ body {
 
 /* == Images and Figures == */
 
-img[class*="align"],
-figure[class*="align"] {
-  display: block;
-  margin: 0 auto @baseFontMargin;
+.alignleft {
+  float: left;
+  margin: 0.3em @baseFontMargin @baseFontMargin 0;
 }
 
-img.alignnone,
-figure.alignnone {
+.alignright {
+  float: right;
+  margin: 0.3em 0 @baseFontMargin @baseFontMargin;
+}
+
+.alignnone,
+.aligncenter {
+  display: block;
+}
+
+.alignnone {
   margin: 0 0 @baseFontMargin;
 }
 
-.wp-caption-text,
-figcaption  {
-  font-size: .85em;
-  text-align: center;
+.aligncenter {
+  margin: 0 auto @baseFontMargin;
 }
 
-.gallery {
-  .no-list-style();
-}
-.gallery-caption {
-  .visuallyhidden();
-}
+/* == default wp gallery == */
 
-/* ==|== Sidebar sdb !n! ===================================================== */
-
-#sidebar {
-
-}
-
-/* ==|== footer ftr !n! ====================================================== */
-
-#footer {
-
-}
-
-.org-info [property="name"] {
-  margin: 0;
-}
-
-.copyright {}
-.design-by {
-  font-size: .85em;
+#main .gallery {
+  margin: 0 -10px;
+  padding: 0;
+  .nobullet();
+    li {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    line-height: 1;
+    &:nth-child(4n+1) {
+      clear: both;
+    }
+    a {
+      display: block;
+      img {
+        width: 100%;
+      }
+    }
+    .caption {
+      .visuallyhidden();
+    }
+  }
 }

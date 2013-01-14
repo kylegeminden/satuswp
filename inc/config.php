@@ -6,19 +6,23 @@
  * The about page and contact page ids are for @link schema.org see itemscope body tag towards the end of this file
 */
 satus_define_constants(array(
-  'WP_JQUERY'               => true,          // enables WordPress' jQuery
-  'TOUCH_ICONS'             => true,          // enables touch icons for mobile devices
-  'POSTS_NAV_PREV'          => '&larr;',      // index.php, etc. posts navigation indicator
+  'WP_JQUERY'               => true,               // enables WordPress' jQuery
+  'TOUCH_ICONS'             => true,               // enables touch icons for mobile devices
+  'POSTS_NAV_PREV'          => '&larr;',           // index.php, etc. posts navigation indicator
   'POSTS_NAV_NEXT'          => '&rarr;',
-  'POST_THUMB_CLASSES'      => 'image thumb', // used for index.php's etc. post thumbnails 
-  'FIGURE_CLASSES'          => 'image',       // used for inserted images w/caption   
+  'MAIN_CLASSES'            => 'column width2of3', // #main classes
+  'MAIN_FULL_WIDTH_CLASSES' => 'column width1of1',
+  'SIDEBAR_CLASSES'         => 'column width1of3', // #sidebar classes
+  'POST_THUMB_CLASSES'      => 'image thumb',      // used for index.php's etc. post thumbnails 
+  'FIGURE_CLASSES'          => 'image',            // used for inserted images w/caption   
   'FIGCAPTION_CLASSES'      => 'caption',
-  'GALLERY_CLASSES'         => 'image thumb', // used for default gallery
+  'GALLERY_CLASSES'         => '',                 // used for default wp gallery
+  'GALLERY_ITEM_CLASSES'    => 'image thumb',
   'GALLERY_CAPTION_CLASSES' => 'caption',
-  'ABOUT_PAGE_ID'           => '',            // about us page id for itemscope tag
-  'CONTACE_PAGE_ID'         => '',            // contact us page id for typeof tag
+  'ABOUT_PAGE_ID'           => '',                 // about us page id for itemscope tag
+  'CONTACE_PAGE_ID'         => '',                 // contact us page id for typeof tag
   'POST_EXCERPT_LENGTH'     => 40,
-  'GOOGLE_ANALYTICS_ID'     => '',            // UA-XXXXX-Y
+  'GOOGLE_ANALYTICS_ID'     => '',                 // UA-XXXXX-Y
 ));
 // Define Constants:
 function satus_define_constants($constants){
@@ -28,10 +32,14 @@ function satus_define_constants($constants){
 }
 
 /**
- * Define which pages shouldn't have the sidebar @link github.com/retlehs/roots/
+ * Define which pages, etc. shouldn't have the sidebar
+ * @link codex.wordpress.org/Conditional_Tags
 */
-function satus_sidebar() {
-  if (is_404() || is_page_template('templates-page/page-full.php')) {
+function satus_display_sidebar() {
+  if (
+    is_404() ||
+    is_page_template('templates-page/page-full.php')
+  ) {
     return false;
   } else {
     return true;
@@ -42,7 +50,7 @@ function satus_sidebar() {
  * Set the content width based on the theme's design and stylesheet.
 */
 if ( ! isset( $content_width ) )
-  $content_width = 1160; /* pixels */
+  $content_width = 1170; /* pixels */
 
 /**
  * Opening body tag with @link rdfa lite 1.1 and schema.org php conditional
@@ -67,7 +75,7 @@ add_filter( 'the_password_form', 'satus_password_form' );
 function satus_password_form() {  
   global $post;  
   $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );  
-  $o = '<form class="protected-post-form" action="' . get_option('siteurl') . '/wp-login.php?action=postpass" method="post"><label class="pass-label" for="' . $label . '">' . __( "Password:", "satus" ) . ' </label><input id="' . $label . '"  name="post_password" type="password" placeholder="Password"><input class="button" type="submit" name="Submit" value="' . esc_attr__( "Submit" ) . '"></form>';  
+  $o = '<p>This post is password protected. To view it please enter your password below:</p><form class="protected-post-form" action="' . get_option('siteurl') . '/wp-login.php?action=postpass" method="post"><label class="pass-label" for="' . $label . '">' . __( "Password:", "satus" ) . ' </label><input id="' . $label . '"  name="post_password" type="password" placeholder="Password"><input class="button" type="submit" name="Submit" value="' . esc_attr__( "Submit" ) . '"></form>';  
   return $o;  
 }
 

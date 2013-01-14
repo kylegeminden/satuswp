@@ -1,24 +1,18 @@
 /*
-Theme Name:         Satus
-Description:        Used to style the TinyMCE editor
-*/
-
-/*
   *** TABLE OF CONTENTS ***
   --------------------------------------------------------------------------  
   Following the name of each section is !n! and a 4 to 5 digit code, for
   example !abc, which you can use find next to skip to the next section.
   --------------------------------------------------------------------------
 
-  Reset             = !rst
-  Normalize         = !nrml
-  Typography        = !typ
-  Tables            = !tbl
-  Forms             = !frm
-  Modules           = !mdl
-  Global Styles     = !gbl
-  Editor Styles     = !edt
-  Helper classes    = !hlp
+  Reset          = !rst
+  Normalize      = !nrml
+  Typography     = !typ
+  Tables         = !tbl
+  Forms          = !frm
+  Grid           = !grd
+  Helper classes = !hlp
+  Editor Styles  = !edt
 */
 
 @import "variables";
@@ -44,7 +38,7 @@ Description:        Used to style the TinyMCE editor
 @import "typography";
 
 /* =============================================================================
-   Tables -n- !tbl
+   Tables !n! !tbl
    ========================================================================== */
 
 @import "tables";
@@ -55,29 +49,116 @@ Description:        Used to style the TinyMCE editor
 
 @import "forms";
 
-/* =============================================================================
-   Modules !n! !mdl  
+/* ==========================================================================
+   Helper Classes !hlp !n!
    ========================================================================== */
 
-@import "modules";
 
-/* =============================================================================
-   Global Styles !n! !glb
-   ========================================================================== */
+/* Image replacement */
 
-@import "global";
+.ir {
+  .ir();
+}
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+
+.hidden {
+  .hidden();
+}
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+
+.visuallyhidden { 
+  .visuallyhidden();
+}
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  .visuallyhidden-focusable();
+}
+
+
+/* Hide visually and from screenreaders, but maintain layout */
+
+.invisible { 
+  .invisible()
+}
+
+/* Contain floats: h5bp.com/q */
+
+.clearfix {
+  .clearfix();
+}
+
+/* Highlight Text */
+.highlight {
+  background: @highlightColor;
+}
+
+/* Floats */
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+/* Lists */
+
+ul.nobullet {
+  .nobullet();
+}
+
+ul.circle {
+  .ulcircle();
+}
+
+ul.disc {
+  .uldisc();
+}
+
+ul.square {
+  .ulsquare();
+}
+
+ol.lowerroman {
+  .lowerroman();
+}
+
+ol.upperroman {
+  .upperroman();
+}
+
+ol.loweralpha {
+  .loweralpha();
+}
+
+ol.upperalpha {
+  .upperalpha();
+}
+
+ol.decimal {
+  .decimal();
+}
+
+ol.decimal0 {
+  .decimal0();
+}
 
 /* =============================================================================
    Editor Styles !n! !edt
    ========================================================================== */
 
 html {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  
 }
 
 body {
-
+  padding: 20px 30px;
 }
 
 /* figure and image float alignment */
@@ -92,44 +173,30 @@ body {
 
 .wp-caption-dd {
   font-size: .85em;
-  line-height: 1.4;
+  line-height: @baseFontLineHeight;
   padding: 0;
   margin: 0;
 }
 
-img.alignright,
-img.alignleft,
-.wp-caption.alignleft,
-.wp-caption.alignright {
+.alignleft {
+  float: left;
+  margin: 0.3em @baseFontMargin @baseFontMargin 0;
+}
+
+.alignright {
+  float: right;
+  margin: 0.3em 0 @baseFontMargin @baseFontMargin;
+}
+
+.alignnone,
+.aligncenter {
   display: block;
 }
 
-img.aligncenter,
-.wp-caption.aligncenter {
-  display: block;
+.alignnone {
+  margin: 0 0 @baseFontMargin;
+}
+
+.aligncenter {
   margin: 0 auto @baseFontMargin;
 }
-
-img.alignnone,
-.wp-caption.alignnone {
-  display: block;
-  margin: 0 0 @baseFontMargin !important;
-}
-
-img.alignleft,
-.wp-caption.alignleft {
-  float: left;
-  margin: .4em @baseFontMargin  @baseFontMargin 0;
-}
-
-img.alignright,
-.wp-caption.alignright {
-  float: right;
-  margin: .4em 0 @baseFontMargin @baseFontMargin;
-}
-
-/* ==========================================================================
-   Helper Classes !n! !hlp
-   ========================================================================== */
-
-@import "helpers";

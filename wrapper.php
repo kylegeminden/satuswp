@@ -8,21 +8,23 @@
 
 <?php get_template_part('templates/header'); ?>
 
-<div id="content">
+<div id="wrap">
+  <div id="content" class="row">
 
-  <div id="main" role="main">
-    <?php include satus_template_path(); ?>
+    <div id="main" class="<?php echo satus_main_class(); ?>" role="main">
+      <?php include satus_template_path(); ?>
+    </div>
+    <!-- /#main -->
+    
+    <?php if(satus_display_sidebar()) : ?>
+      <aside id="sidebar" class="<?php echo satus_sidebar_class(); ?>" role="complementary">
+        <h2 class="assistive-text"><?php _e( 'Sidebar', 'satus' ); ?></h2>
+        <?php get_template_part('templates/sidebar'); ?>
+      </aside>
+      <!-- /#sidebar -->
+    <?php endif; ?>
+
   </div>
-  <!-- /#main -->
-
-  <?php if(satus_sidebar()) : ?>
-    <aside id="sidebar" role="complementary">
-      <h2 class="assistive-text"><?php _e( 'Sidebar', 'satus' ); ?></h2>
-      <?php get_template_part('templates/sidebar'); ?>
-    </aside>
-    <!-- /#sidebar -->
-  <?php endif; ?>
-
 </div>
 <!-- /#content -->
 

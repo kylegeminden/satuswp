@@ -18,14 +18,13 @@
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/ico/apple-touch-icon-114x114-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/ico/apple-touch-icon-72x72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/ico/apple-touch-icon-57x57-precomposed.png">
+  <meta name="application-name" content="Satus Framework"/> 
+  <meta name="msapplication-TileColor" content="#212121"/> 
+  <meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory_uri(); ?>/assets/ms-tile.png"/>
   <?php endif; ?>
 
   <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/vendor/modernizr.js"></script>
 
   <?php wp_head(); ?>
-
-  <?php if (wp_count_posts()->publish > 0) : ?>
-  <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
-  <?php endif; ?>
   
 </head>

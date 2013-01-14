@@ -83,16 +83,9 @@ function mad_remove_default_description($bloginfo) {
 add_filter('get_bloginfo_rss', 'mad_remove_default_description');
 
 /**
- * Removes the following items out of the <head>
- * @link wpengineer.com/1438/wordpress-header/
+ * Removes the WordPress version from out of the <head>
 */
-remove_action('wp_head', 'feed_links', 2);
-remove_action('wp_head', 'feed_links_extra', 3);
-remove_action('wp_head', 'rsd_link');
-remove_action('wp_head', 'wlwmanifest_link');
-remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 remove_action('wp_head', 'wp_generator');
-remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 /**
  * Remove the WordPress version from RSS feeds
@@ -277,7 +270,7 @@ function satus_gallery_shortcode($attr) {
   $selector = "gallery-{$instance}";
   $output = apply_filters('gallery_style', "    
     <!-- see gallery_shortcode() in wp-includes/media.php -->
-    <ul id='$selector' class='gallery galleryid-{$id}'>");
+    <ul id='$selector' class='gallery galleryid-{$id} ".GALLERY_CLASSES."'>");
   $i = 0;
   foreach ( $attachments as $id => $attachment ) {
     // make the gallery link to the file by default instead of the attachment
@@ -285,7 +278,7 @@ function satus_gallery_shortcode($attr) {
     $link = isset($attr['link']) && $attr['link'] === 'attachment' ? 
       wp_get_attachment_link($id, $size, true, false) : 
       wp_get_attachment_link($id, $size, false, false);
-    $output .= "<{$itemtag} class='gallery-item ". GALLERY_CLASSES ."'>";
+    $output .= "<{$itemtag} class='gallery-item ". GALLERY_ITEM_CLASSES ."'>";
     $output .= "$link";
     if ( $captiontag && trim($attachment->post_excerpt) ) {
       $output .= "
