@@ -1,5 +1,10 @@
 ### HEAD
 
+### 1.5.1 January 14, 2013
+
+* Removed code comments in `grid.less` regarding only using even numbers as that is no longer valid.
+* Removed `px` unit from code font size variable.
+
 ### 1.5.0 January 13, 2013
 
 * Applied 1.5.0 changes from [satushtml](https://github.com/kylegeminden/satushtml).
