@@ -18,6 +18,10 @@
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/ico/apple-touch-icon-114x114-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/ico/apple-touch-icon-72x72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/ico/apple-touch-icon-57x57-precomposed.png">
+  
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory_uri(); ?>/assets/ico/apple-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#212121">
   <?php endif; ?>
 
   <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/vendor/modernizr.js"></script>
