@@ -1,3 +1,12 @@
+/* Floats */
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
 
 /* Image replacement */
 
@@ -37,65 +46,7 @@
   .clearfix();
 }
 
-/* Highlight Text */
-.highlight {
-  background: @highlightColor;
-}
-
-/* Floats */
-
-.right {
-  float: right;
-}
-
-.left {
-  float: left;
-}
-
-/* Lists */
-
-ul.nobullet {
-  .nobullet();
-}
-
-ul.circle {
-  .ulcircle();
-}
-
-ul.disc {
-  .uldisc();
-}
-
-ul.square {
-  .ulsquare();
-}
-
-ol.lowerroman {
-  .lowerroman();
-}
-
-ol.upperroman {
-  .upperroman();
-}
-
-ol.loweralpha {
-  .loweralpha();
-}
-
-ol.upperalpha {
-  .upperalpha();
-}
-
-ol.decimal {
-  .decimal();
-}
-
-ol.decimal0 {
-  .decimal0();
-}
-
-/* == Responsive Utilities */
-/* https://github.com/twitter/bootstrap/ */
+/* Responsive Helpers */
 
 /*
   IE10 Metro responsive
@@ -106,60 +57,29 @@ ol.decimal0 {
   width: device-width;
 }
 
-/* For desktops */
-.visible-phone {
-  display: none !important;
-}
-.visible-tablet {
-  display: none !important;
-}
-.hidden-desktop {
-  display: none !important;
-}
-.visible-desktop {
-  display: inherit !important;
+.hide0 { display: none !important; }
+
+@media only screen and (min-width: 480px) {
+  .hide480 { display: none !important; }
+  .show480 { display: inherit !important; }
 }
 
-/* Tablets & small desktops only */
-@media (min-width: 768px) and (max-width: 979px) {
-
-  /* Hide everything else */
-  .hidden-desktop {
-    display: inherit !important;
-  }
-  .visible-desktop {
-    display: none !important ;
-  }
-
-  /* Show */
-  .visible-tablet {
-    display: inherit !important;
-  }
-
-  /* Hide */
-  .hidden-tablet {
-    display: none !important;
-  }
+@media only screen and (min-width: 600px) {
+  .hide600 { display: none !important; }
+  .show600 { display: inherit !important; }
 }
 
-/* Phones only */
-@media (max-width: 767px) {
+@media only screen and (min-width: 768px) {
+  .hide768 { display: none !important; }
+  .show768 { display: inherit !important; }
+}
 
-  /* Hide everything else */
-  .hidden-desktop {
-    display: inherit !important;
-  }
-  .visible-desktop {
-    display: none !important;
-  }
+@media only screen and (min-width: 992px) {
+  .hide992 { display: none !important; }
+  .show992 { display: inherit !important; }
+}
 
-  /* Show */
-  .visible-phone {
-    display: inherit !important;
-  }
-
-  /* Hide */
-  .hidden-phone {
-    display: none !important;
-  }
+@media only screen and (min-width: 1382px) {
+  .hide1382 { display: none !important; }
+  .show1382 { display: inherit !important; }
 }

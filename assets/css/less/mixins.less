@@ -147,21 +147,12 @@
   border-color : @color;
 }
 
-// .border-radius(4px);
-
-.border-radius(@radius: 4px) {
-  -webkit-border-radius : @radius;
-     -moz-border-radius : @radius;
-          border-radius : @radius;
-}
-
 // ==|== Shadows !n! !shd =======================================================
 
 .box-shadow(@shadowA, @shadowB:X, ...){
   // Multiple shadow solution from http://toekneestuck.com/blog/2012/05/15/less-css-arguments-variable/
   @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
-  -webkit-box-shadow: @props;
-     -moz-box-shadow: @props;
+  -webkit-box-shadow: @props; // iOS <4.3 & Android <4.1
           box-shadow: @props;
 }
 
@@ -224,7 +215,6 @@
 .transition(@transition) {
   -webkit-transition : @transition;
      -moz-transition : @transition;
-      -ms-transition : @transition;
        -o-transition : @transition;
           transition : @transition;
 }
@@ -253,7 +243,6 @@
 .backface-visibility(@visibility){
   -webkit-backface-visibility : @visibility;
      -moz-backface-visibility : @visibility;
-      -ms-backface-visibility : @visibility;
           backface-visibility : @visibility;
 }
 
@@ -297,8 +286,7 @@
     background: -moz-linear-gradient(top, @firstColor @firstStop, @lastColor @lastStop);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(@firstStop, @firstColor), color-stop(@lastStop, @lastColor));
     background-image: -webkit-linear-gradient(top, @firstColor @firstStop, @lastColor @lastStop);
-    background: -o-linear-gradient(top, @firstColor @firstStop, @lastColor @lastStop); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, @firstColor @firstStop, @lastColor @lastStop);
+    background: -o-linear-gradient(top, @firstColor @firstStop, @lastColor @lastStop);
     background: linear-gradient(to bottom, @firstColor @firstStop, @lastColor @lastStop);
   }
 
@@ -310,8 +298,7 @@
     background: -moz-linear-gradient(top, @firstColor @firstStop, @secondColor @secondStop, @lastColor @lastStop);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(@firstStop,@firstColor), color-stop(@secondStop,@secondColor), color-stop(@lastStop,@lastColor));
     background: -webkit-linear-gradient(top, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop);
-    background: -o-linear-gradient(top, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop);
+    background: -o-linear-gradient(top, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop);
     background: linear-gradient(to bottom, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop);
   }
 
@@ -323,8 +310,7 @@
     background: -moz-linear-gradient(top, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(@firstStop, @firstColor), color-stop(@secondStop, @secondColor), color-stop(@thirdStop, @thirdColor), color-stop(@lastStop, @lastColor));
     background: -webkit-linear-gradient(top, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
-    background: -o-linear-gradient(top, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
+    background: -o-linear-gradient(top, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
     background: linear-gradient(to bottom, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
   }
 
@@ -335,8 +321,7 @@
     background: @fallBack;
     background: -moz-linear-gradient(@deg, @firstColor @firstStop, @lastColor @lastStop);
     background: -webkit-linear-gradient(@deg, @firstColor @firstStop,@lastColor @lastStop);
-    background: -o-linear-gradient(@deg, @firstColor @firstStop,@lastColor @lastStop); /* Opera 11.10+ */
-    background: -ms-linear-gradient(@deg, @firstColor @firstStop,@lastColor @lastStop);
+    background: -o-linear-gradient(@deg, @firstColor @firstStop,@lastColor @lastStop);
     background: linear-gradient(@deg, @firstColor @firstStop,@lastColor @lastStop);
   }
 
@@ -347,8 +332,7 @@
     background: @fallBack;
     background: -moz-linear-gradient(@deg, @firstColor @firstStop, @secondColor @secondStop, @lastColor @lastStop);
     background: -webkit-linear-gradient(@deg, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop);
-    background: -o-linear-gradient(@deg, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop); /* Opera 11.10+ */
-    background: -ms-linear-gradient(@deg, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop);
+    background: -o-linear-gradient(@deg, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop);
     background: linear-gradient(@deg, @firstColor @firstStop,@secondColor @secondStop,@lastColor @lastStop);
   }
 
@@ -360,8 +344,7 @@
     background: -moz-linear-gradient(@deg, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
     background: -webkit-gradient(linear, left bottom, right top, color-stop(@firstStop, @firstColor), color-stop(@secondStop, @secondColor), color-stop(@thirdStop, @thirdColor), color-stop(@lastStop, @lastColor));
     background: -webkit-linear-gradient(@deg, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
-    background: -o-linear-gradient(@deg, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop); /* Opera 11.10+ */
-    background: -ms-linear-gradient(@deg, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
+    background: -o-linear-gradient(@deg, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
     background: linear-gradient(@deg, @firstColor @firstStop, @secondColor @secondStop, @thirdColor @thirdStop, @lastColor @lastStop);
   }
 
@@ -374,7 +357,6 @@
     background: -webkit-gradient(radial, center center, 0px, center center, @lastStop, color-stop(@firstStop, @firstColor), color-stop(@lastStop, @lastColor));
     background: -webkit-radial-gradient(center, ellipse cover, @firstColor @firstStop, @lastColor @lastStop);
     background: -o-radial-gradient(center, ellipse cover, @firstColor @firstStop, @lastColor @lastStop);
-    background: -ms-radial-gradient(center, ellipse cover, @firstColor @firstStop, @lastColor @lastStop);
     background: radial-gradient(ellipse at center, @firstColor @firstStop, @lastColor @lastStop);
   }
 
@@ -387,7 +369,6 @@
     background: -webkit-gradient(radial, center center, 0px, center center, @lastStop, color-stop(@firstStop, @firstColor), color-stop(@lastStop, @lastColor));
     background: -webkit-radial-gradient(center, circle cover, @firstColor @firstStop, @lastColor @lastStop);
     background: -o-radial-gradient(center, circle cover, @firstColor @firstStop, @lastColor @lastStop);
-    background: -ms-radial-gradient(center, circle cover, @firstColor @firstStop, @lastColor @lastStop);
     background: radial-gradient(circle at center, @firstColor @firstStop, @lastColor @lastStop);
   }
 

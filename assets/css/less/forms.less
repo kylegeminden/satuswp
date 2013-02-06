@@ -2,7 +2,7 @@
 .fieldset {
   padding: @fieldsetPadding;
   .bordered(@fieldsetBorderWidth, @fieldsetBorderStyle, @fieldsetBorderColor);
-  .border-radius(@fieldsetRadius);
+  border-radius: @fieldsetRadius;
 }
 
 label {
@@ -39,7 +39,7 @@ textarea {
   padding: @inputPadding;
   background: @inputBackground;
   border: @inputBorder;
-  .border-radius(@inputRadius);
+  border-radius: @inputRadius;
   .transition(@inputTransition);
   outline-style: none;
 }
@@ -97,7 +97,7 @@ textarea {
   padding: @buttonPadding;
   background: @buttonBackground;
   border: @buttonBorder;
-  .border-radius(@buttonRadius);
+  border-radius: @buttonRadius;
   font-family: @buttonFont;
   .font-size(@buttonFontSize);
   line-height: 1;
