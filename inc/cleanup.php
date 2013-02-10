@@ -179,123 +179,139 @@ function satus_widget_first_last_classes($params) {
 add_filter('dynamic_sidebar_params', 'satus_widget_first_last_classes');
 
 /**
-* use figure and figcaption and removes 10px addition
-* see caption shortcode in wp-includes/media.php since 2.6.0
-*/
-function satus_img_caption_shortcode($attr, $content = null) {
-  // New-style shortcode with the caption inside the shortcode with the link and image tags.
-  if ( ! isset( $attr['caption'] ) ) {
-    if ( preg_match( '#((?:<a [^>]+>\s*)?<img [^>]+>(?:\s*</a>)?)(.*)#is', $content, $matches ) ) {
-      $content = $matches[1];
-      $attr['caption'] = trim( $matches[2] );
-    }
-  }
-  // Allow plugins/themes to override the default caption template.
-  $output = apply_filters('img_caption_shortcode', '', $attr, $content);
-  if ( $output != '' )
+ * Use <figure> and <figcaption> plus added ability for custom classes via inc/config.php
+ * @link https://github.com/retlehs/roots/blob/master/lib/cleanup.php
+ * @link http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
+ */
+function satus_caption($output, $attr, $content) {
+  if (is_feed()) {
     return $output;
-  extract(shortcode_atts(array(
-    'id'  => '',
-    'align' => 'alignnone',
-    'width' => '',
+  }
+
+  $defaults = array(
+    'id'      => '',
+    'align'   => 'alignnone',
+    'width'   => '',
     'caption' => ''
-  ), $attr));
-  if ( 1 > (int) $width || empty($caption) )
+  );
+
+  $attr = shortcode_atts($defaults, $attr);
+
+  // If the width is less than 1 or there is no caption, return the content wrapped between the [caption] tags
+  if ($attr['width'] < 1 || empty($attr['caption'])) {
     return $content;
-  if ( $id ) $id = 'id="' . esc_attr($id) . '" ';
-  return '<figure ' . $id . 'class="wp-caption ' . esc_attr($align) . ' '. FIGURE_CLASSES .'" style="width: ' . $width . 'px">'
-  . do_shortcode( $content ) . '<figcaption class="wp-caption-text '. FIGCAPTION_CLASSES .'">' . $caption . '</figcaption></figure>';
+  }
+
+  // Set up the attributes for the caption <figure>
+  $attributes  = (!empty($attr['id']) ? ' id="' . esc_attr($attr['id']) . '"' : '' );
+  $attributes .= ' class="'. FIGURE_CLASSES .' wp-caption ' . esc_attr($attr['align']) . '"';
+  $attributes .= ' style="width: ' . esc_attr($attr['width']) . 'px"';
+
+  $output  = '<figure' . $attributes .'>';
+  $output .= do_shortcode($content);
+  $output .= '<figcaption class="'. FIGCAPTION_CLASSES .' wp-caption-text">' . $attr['caption'] . '</figcaption>';
+  $output .= '</figure>';
+
+  return $output;
 }
-add_shortcode('wp_caption', 'satus_img_caption_shortcode');
-add_shortcode('caption', 'satus_img_caption_shortcode');
+
+add_filter('img_caption_shortcode', 'satus_caption', 10, 3);
 
 /**
-* Modified Gallery Shortcode to use ul see gallery shortcode in wp-includes/media.php since 2.5.0
-*/
-function satus_gallery_shortcode($attr) {
-  global $post, $wp_locale;
+ * Clean up gallery_shortcode()
+ *
+ * @link https://github.com/retlehs/roots/blob/master/lib/cleanup.php
+ */
+function satus_gallery($attr) {
+  $post = get_post();
+
   static $instance = 0;
   $instance++;
-  // Allow plugins/themes to override the default gallery template.
-  $output = apply_filters('post_gallery', '', $attr);
-  if ( $output != '' )
-    return $output;
-  // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
-  if ( isset( $attr['orderby'] ) ) {
-    $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-    if ( !$attr['orderby'] )
-      unset( $attr['orderby'] );
+
+  if (!empty($attr['ids'])) {
+    if (empty($attr['orderby'])) {
+      $attr['orderby'] = 'post__in';
+    }
+    $attr['include'] = $attr['ids'];
   }
+
+  $output = apply_filters('post_gallery', '', $attr);
+
+  if ($output != '') {
+    return $output;
+  }
+
+  if (isset($attr['orderby'])) {
+    $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
+    if (!$attr['orderby']) {
+      unset($attr['orderby']);
+    }
+  }
+
   extract(shortcode_atts(array(
     'order'      => 'ASC',
     'orderby'    => 'menu_order ID',
     'id'         => $post->ID,
-    'itemtag'    => 'li',
-    'captiontag' => 'p',
+    'itemtag'    => '',
+    'icontag'    => '',
+    'captiontag' => '',
     'columns'    => 3,
     'size'       => 'thumbnail',
     'include'    => '',
     'exclude'    => ''
   ), $attr));
+
   $id = intval($id);
-  if ( 'RAND' == $order )
+
+  if ($order === 'RAND') {
     $orderby = 'none';
-  if ( !empty($include) ) {
-    $include = preg_replace( '/[^0-9,]+/', '', $include );
-    $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+  }
+
+  if (!empty($include)) {
+    $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+
     $attachments = array();
-    foreach ( $_attachments as $key => $val ) {
+    foreach ($_attachments as $key => $val) {
       $attachments[$val->ID] = $_attachments[$key];
     }
-  } elseif ( !empty($exclude) ) {
-    $exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
-    $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+  } elseif (!empty($exclude)) {
+    $attachments = get_children(array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   } else {
-    $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    $attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   }
-  if ( empty($attachments) )
-    return '';
 
-  if ( is_feed() ) {
+  if (empty($attachments)) {
+    return '';
+  }
+
+  if (is_feed()) {
     $output = "\n";
-    foreach ( $attachments as $att_id => $attachment )
+    foreach ($attachments as $att_id => $attachment) {
       $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+    }
     return $output;
   }
-  $itemtag = tag_escape($itemtag);
-  $captiontag = tag_escape($captiontag);
-  $columns = intval($columns);
-  $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
-  $float = is_rtl() ? 'right' : 'left';
-  $selector = "gallery-{$instance}";
-  $output = apply_filters('gallery_style', "    
-    <!-- see gallery_shortcode() in wp-includes/media.php -->
-    <ul id='$selector' class='gallery galleryid-{$id} ".GALLERY_CLASSES."'>");
+
+  $output = '<ul class="'.GALLERY_CLASSES.'">';
+
   $i = 0;
-  foreach ( $attachments as $id => $attachment ) {
-    // make the gallery link to the file by default instead of the attachment
-    // thanks to Matt Price (countingrows.com)
-    $link = isset($attr['link']) && $attr['link'] === 'attachment' ? 
-      wp_get_attachment_link($id, $size, true, false) : 
-      wp_get_attachment_link($id, $size, false, false);
-    $output .= "<{$itemtag} class='gallery-item ". GALLERY_ITEM_CLASSES ."'>";
-    $output .= "$link";
-    if ( $captiontag && trim($attachment->post_excerpt) ) {
-      $output .= "
-        <{$captiontag} class='gallery-caption ". GALLERY_CAPTION_CLASSES ."'>
-        " . wptexturize($attachment->post_excerpt) . "
-        </{$captiontag}>";
+  foreach ($attachments as $id => $attachment) {
+    $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+
+    $output .= '<li class="' . GALLERY_ITEM_CLASSES . '">' . $link;
+    if (trim($attachment->post_excerpt)) {
+      $output .= '<div class="' . GALLERY_CAPTION_CLASSES . '">' . wptexturize($attachment->post_excerpt) . '</div>';
     }
-    $output .= "</{$itemtag}>";
-    if ( $columns > 0 && ++$i % $columns == 0 )
-      $output .= '';
+    $output .= '</li>';
   }
-  $output .= "</ul>\n";
+
+  $output .= '</ul>';
+
   return $output;
 }
 //deactivate WordPress function and activate own function
 remove_shortcode('gallery');
-add_shortcode('gallery', 'satus_gallery_shortcode');
+add_shortcode('gallery', 'satus_gallery');
 
 /**
  * Custom Walker that adds menu-item-slug (menu item title) and description
