@@ -3,7 +3,7 @@
 /**
  * Satus Configuration and Constants
  * Thanks to Adam Nowak @link codehyperspatial.com
- * The about page and contact page ids are for @link schema.org see itemscope body tag towards the end of this file
+ * The about page and contact page ids are for @link schema.org see typeof body tag towards the end of this file
 */
 satus_define_constants(array(
   'WP_JQUERY'               => true,               // enables WordPress' jQuery
@@ -16,7 +16,7 @@ satus_define_constants(array(
   'POST_THUMB_CLASSES'      => 'image thumb',      // used for index.php's etc. post thumbnails 
   'FIGURE_CLASSES'          => 'image',            // used for inserted images w/caption   
   'FIGCAPTION_CLASSES'      => 'caption',
-  'GALLERY_CLASSES'         => '',                 // used for default wp gallery
+  'GALLERY_CLASSES'         => 'gallery',          // used for default wp gallery
   'GALLERY_ITEM_CLASSES'    => 'image thumb',
   'GALLERY_CAPTION_CLASSES' => 'caption',
   'ABOUT_PAGE_ID'           => '',                 // about us page id for itemscope tag
