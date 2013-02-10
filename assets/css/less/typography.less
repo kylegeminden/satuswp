@@ -4,6 +4,8 @@ html {
 }
 
 html,
+// body wp's editor
+body#tinymce,
 button,
 input,
 select,
@@ -171,49 +173,4 @@ blockquote cite {
 blockquote small:before {
   content: "\2014";
   padding-right: 3px;
-}
-
-/* Highlight Text */
-.highlight {
-  background: @highlightColor;
-}
-
-ul.nobullet {
-  .nobullet();
-}
-
-ul.circle {
-  .ulcircle();
-}
-
-ul.disc {
-  .uldisc();
-}
-
-ul.square {
-  .ulsquare();
-}
-
-ol.lowerroman {
-  .lowerroman();
-}
-
-ol.upperroman {
-  .upperroman();
-}
-
-ol.loweralpha {
-  .loweralpha();
-}
-
-ol.upperalpha {
-  .upperalpha();
-}
-
-ol.decimal {
-  .decimal();
-}
-
-ol.decimal0 {
-  .decimal0();
 }

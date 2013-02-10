@@ -21,20 +21,20 @@
 .row()            { padding: 0 @gutterDefault; }
 
 .row(768)         { padding: 0 @gutter768; }
-.row(768, nocol)  { padding: 0 @gutter768Total; }
 .row(768, nest)   { margin: 0 -@gutter768; }
+.row(768, nocol)  { padding: 0 @gutter768Total; }
 
 .row(992)         { padding: 0 @gutter992; }
-.row(992, nocol)  { padding: 0 @gutter992Total; }
 .row(992, nest)   { margin: 0 -@gutter992; }
+.row(992, nocol)  { padding: 0 @gutter992Total; }
 
 .row(1382)        { padding: 0 @gutter1382; }
-.row(1382, nocol) { padding: 0 @gutter1382Total; }
 .row(1382, nest)  { margin: 0 -@gutter1382; }
+.row(1382, nocol) { padding: 0 @gutter1382Total; }
 
 .row(ie)          { padding: 0 @gutterIE; }
-.row(ie, nocol)   { padding: 0 @gutterIETotal; }
 .row(ie, nest)    { margin: 0 -@gutterIE; }
+.row(ie, nocol)   { padding: 0 @gutterIETotal; }
 
 // COLUMNS
 // ----------------------------------------------
@@ -102,6 +102,12 @@
       .row {
         padding: 0;
       }
+      &.fullwidth {
+        padding: 0;
+      }
+      .row.fullwidth {
+        margin: 0;
+      }
     }
 
     @media only screen and (min-width: 768px) {
@@ -110,15 +116,13 @@
         .row(768);
         .row {
           .row(768,nest);
-          padding: 0;
         }
-        &.row.nocolumns {
+        &.nocolumns {
           .row(768,nocol);
         }
       }
       .column {
         float: left;
-        min-height: 1px;
         .gutter(768);
       }
       .width1of1 { .width(1,1); }
@@ -140,9 +144,8 @@
         .row(992);
         .row {
           .row(992,nest);
-          padding: 0;
         }
-        &.row.nocolumns {
+        &.nocolumns {
           .row(992,nocol);
         }
       }
@@ -158,9 +161,8 @@
         .row(1382);
         .row {
           .row(1382,nest);
-          padding: 0;
         }
-        &.row.nocolumns {
+        &.nocolumns {
           .row(1382,nocol);
         }
       }
@@ -176,17 +178,23 @@
 
     .row {
       .row(ie);
+      .clearfix();
       .row {
         .row(ie,nest);
         padding: 0;
       }
-      &.row.nocolumns {
+      &.nocolumns {
         .row(ie,nocol);
+      }
+      &.fullwidth {
+        padding: 0;
+      }
+      .row.fullwidth {
+        margin: 0;
       }
     }
     .column {
       float: left;
-      min-height: 1px;
       .gutter(ie);
     }
     .width1of1 { .width(1,1); }
