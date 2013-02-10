@@ -18,7 +18,7 @@
     
     <?php if(satus_display_sidebar()) : ?>
       <aside id="sidebar" class="<?php echo satus_sidebar_class(); ?>" role="complementary">
-        <h2 class="assistive-text"><?php _e( 'Sidebar', 'satus' ); ?></h2>
+        <h2 class="visuallyhidden"><?php _e( 'Sidebar', 'satus' ); ?></h2>
         <?php get_template_part('templates/sidebar'); ?>
       </aside>
       <!-- /#sidebar -->
