@@ -10,8 +10,8 @@
       </hgroup>
       
       <nav id="primary-nav" role="navigation">
-        <h2 class="assistive-text"><?php _e( 'Primary Navigation', 'satus' ); ?></h2>
-        <a class="assistive-text" href="#main" title="<?php _e('Go to main content', 'satus') ?>"><?php _e('Go to main content', 'satus') ?></a>
+        <h2 class="visuallyhidden"><?php _e( 'Primary Navigation', 'satus' ); ?></h2>
+        <a class="visuallyhidden" href="#main" title="<?php _e('Go to main content', 'satus') ?>"><?php _e('Go to main content', 'satus') ?></a>
         <?php
           if (has_nav_menu('primary_nav')) {
             wp_nav_menu(array(

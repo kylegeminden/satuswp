@@ -2,7 +2,7 @@
   <div class="row">
     <section class="column width1of1">
 
-      <h2 class="assistive-text"><?php _e( 'Footer', 'satus' ); ?></h2>
+      <h2 class="visuallyhidden"><?php _e( 'Footer', 'satus' ); ?></h2>
       
       <section class="org-info" vocab="http://schema.org/" typeof="Organization">
         <h3 property="name">
