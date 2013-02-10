@@ -1,5 +1,14 @@
 ### HEAD
 
+### 2.0.0 
+
+* Changed back to mobile first responsive similar to the initial release.
+* Added changes from Satus HTML 2.0.0.
+* Updated `enqueue.php` to load `main.css` and `main-ie.css`.
+* Added `wrapper-front-page.php` for quick editing of home page.
+* Updated galley and caption in `cleanup.php` to that [from roots](https://github.com/retlehs/roots/blob/master/lib/cleanup.php) but kept in the ability to add classes via `config.php`.
+* Simplified editor styles in `editor.less`.
+
 ### 1.5.1 January 14, 2013
 
 * Removed code comments in `grid.less` regarding only using even numbers as that is no longer valid.

@@ -1,6 +1,6 @@
 # [Satus Framework for WordPress](http://satusframework.com/) 
 
-Satus Framework for WordPress is a minimalist responsive theme for developers based off of [Satus Framework](http://satusframework.com/) and inspired from [Roots Theme](http://rootstheme.com).
+Satus Framework for WordPress is a minimalist, [LESS](http://lesscss.org/) powered, mobile first responsive theme for developers based off of [Satus Framework](http://satusframework.com/) and inspired from [Roots Theme](http://rootstheme.com).
 
 Satus Framework is based off of the [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate).
 
@@ -32,9 +32,8 @@ I've opted to keep this theme minimal and as close to WordPress' default functio
 * Uses box-sizing on all elements.
 * Minimal styling.
 * Fluid videos.
-* Includes [Less](http://lesscss.org/) files.
-* Grid system inspired from [Object Oriented CSS Framework](https://github.com/stubbornella/oocss/tree/master/core/grid).
-* Responsive Helpers from [Twitter Bootstrap](http://twitter.github.com/bootstrap/).
+* Uses [Less](http://lesscss.org/) to compile a single style sheet for modern browsers and one for Internet Explorer 8 that has the media queries removed rather than using a js media query reader.
+* Grid system inspired from [Object Oriented CSS Framework](https://github.com/stubbornella/oocss/tree/master/core/grid). Also includes Less mixins for semantic grid if desired.
 * Fix for [iPhone viewport scale bug](http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/).
 * Favicon and touch icons.
 
