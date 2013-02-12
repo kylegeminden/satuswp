@@ -106,7 +106,7 @@ function is_tree($pid) {      // $pid = The ID of the page we're looking for pag
 if(!function_exists('satus_paged_nav')):
 function satus_paged_nav( $args = '' ) {
   $defaults = array(
-    'before' => '<nav class="paged-nav pagination"><h2 class="assistive-text">' . __('Pagination Navigation', 'satus') . '</h2>', 
+    'before' => '<nav class="paged-nav pagination"><h2 class="visuallyhidden">' . __('Pagination Navigation', 'satus') . '</h2>', 
     'after' => '</nav>',
     'text_before' => '',
     'text_after' => '',
@@ -178,7 +178,7 @@ function satus_posts_nav($prev = '&larr;', $next = '&rarr;') {
   );
   if( $wp_rewrite->using_permalinks() )
     $pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . 'page/%#%/', 'paged' );
-  echo '<nav class="posts-nav pagination"><h2 class="assistive-text">' . __('Posts Navigation', 'satus') . '</h2>' . paginate_links( $pagination ) . '</nav>' ;
+  echo '<nav class="posts-nav pagination"><h2 class="visuallyhidden">' . __('Posts Navigation', 'satus') . '</h2>' . paginate_links( $pagination ) . '</nav>' ;
 }
 endif;
 
