@@ -97,23 +97,12 @@ add_filter('the_generator', '__return_false');
  * @link github.com/retlehs/roots/
  */
 function satus_body_class($classes) {
-
   // Add post/page slug
   if (is_single() || is_page() && !is_front_page()) {
     $classes[] = basename(get_permalink());
   }
-
-  // Remove unnecessary classes
-  $home_id_class = 'page-id-' . get_option('page_on_front');
-  $remove_classes = array(
-    'page-template-default',
-    $home_id_class
-  );
-  $classes = array_diff($classes, $remove_classes);
-
   return $classes;
 }
-
 add_filter('body_class', 'satus_body_class');
 
 /**
@@ -187,67 +176,54 @@ function satus_caption($output, $attr, $content) {
   if (is_feed()) {
     return $output;
   }
-
   $defaults = array(
     'id'      => '',
     'align'   => 'alignnone',
     'width'   => '',
     'caption' => ''
   );
-
   $attr = shortcode_atts($defaults, $attr);
-
   // If the width is less than 1 or there is no caption, return the content wrapped between the [caption] tags
   if ($attr['width'] < 1 || empty($attr['caption'])) {
     return $content;
   }
-
   // Set up the attributes for the caption <figure>
   $attributes  = (!empty($attr['id']) ? ' id="' . esc_attr($attr['id']) . '"' : '' );
   $attributes .= ' class="'. FIGURE_CLASSES .' wp-caption ' . esc_attr($attr['align']) . '"';
   $attributes .= ' style="width: ' . esc_attr($attr['width']) . 'px"';
-
   $output  = '<figure' . $attributes .'>';
   $output .= do_shortcode($content);
   $output .= '<figcaption class="'. FIGCAPTION_CLASSES .' wp-caption-text">' . $attr['caption'] . '</figcaption>';
   $output .= '</figure>';
-
   return $output;
 }
 
 add_filter('img_caption_shortcode', 'satus_caption', 10, 3);
 
 /**
- * Clean up gallery_shortcode()
- *
+ * Clean up gallery_shortcode() plus added ability for custom classes via inc/config.php
  * @link https://github.com/retlehs/roots/blob/master/lib/cleanup.php
  */
 function satus_gallery($attr) {
   $post = get_post();
-
   static $instance = 0;
   $instance++;
-
   if (!empty($attr['ids'])) {
     if (empty($attr['orderby'])) {
       $attr['orderby'] = 'post__in';
     }
     $attr['include'] = $attr['ids'];
   }
-
   $output = apply_filters('post_gallery', '', $attr);
-
   if ($output != '') {
     return $output;
   }
-
   if (isset($attr['orderby'])) {
     $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
     if (!$attr['orderby']) {
       unset($attr['orderby']);
     }
   }
-
   extract(shortcode_atts(array(
     'order'      => 'ASC',
     'orderby'    => 'menu_order ID',
@@ -260,16 +236,12 @@ function satus_gallery($attr) {
     'include'    => '',
     'exclude'    => ''
   ), $attr));
-
   $id = intval($id);
-
   if ($order === 'RAND') {
     $orderby = 'none';
   }
-
   if (!empty($include)) {
     $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
-
     $attachments = array();
     foreach ($_attachments as $key => $val) {
       $attachments[$val->ID] = $_attachments[$key];
@@ -279,11 +251,9 @@ function satus_gallery($attr) {
   } else {
     $attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   }
-
   if (empty($attachments)) {
     return '';
   }
-
   if (is_feed()) {
     $output = "\n";
     foreach ($attachments as $att_id => $attachment) {
@@ -291,22 +261,17 @@ function satus_gallery($attr) {
     }
     return $output;
   }
-
   $output = '<ul class="'.GALLERY_CLASSES.'">';
-
   $i = 0;
   foreach ($attachments as $id => $attachment) {
     $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
-
     $output .= '<li class="' . GALLERY_ITEM_CLASSES . '">' . $link;
     if (trim($attachment->post_excerpt)) {
       $output .= '<div class="' . GALLERY_CAPTION_CLASSES . '">' . wptexturize($attachment->post_excerpt) . '</div>';
     }
     $output .= '</li>';
   }
-
   $output .= '</ul>';
-
   return $output;
 }
 //deactivate WordPress function and activate own function
