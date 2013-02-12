@@ -38,6 +38,7 @@ function satus_define_constants($constants){
 function satus_display_sidebar() {
   if (
     is_404() ||
+    is_front_page() && 'page' == get_option('show_on_front') ||
     is_page_template('templates-page/page-full.php')
   ) {
     return false;
