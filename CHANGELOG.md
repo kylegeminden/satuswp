@@ -5,7 +5,7 @@
 * Changed back to mobile first responsive similar to the initial release.
 * Added changes from Satus HTML 2.0.0.
 * Updated `enqueue.php` to load `main.css` and `main-ie.css`.
-* Added `content-home-page.php` and modified `front-page.php` to load that if a page is selected to display for the front page.
+* Added `content-home-page.php` and modified `front-page.php` to load that if a page is selected to display for the front page and it also switches to full width.
 * Modified the `satus_display_sidebar()` function to go full width on the front page if a page is selected to display. 
 * Updated galley and caption in `cleanup.php` to that from [roots](https://github.com/retlehs/roots/blob/master/lib/cleanup.php) but kept in the ability to add classes via `config.php`.
 * Simplified editor styles in `editor.less`.

@@ -19,6 +19,7 @@ I've opted to keep this theme minimal and as close to WordPress' default functio
 * Custom template tags and shortcodes.
 * Supports child themes.
 * Nav menu supports description and contains classes and data attributes for Twitter Bootstrap's dropdowns if needed.
+* Front page switches to full width if a page is selected.
 * [Posts pagination]((http://wp-snippets.com/pagination-without-plugin/) from [WP-Snippets](http://wp-snippets.com/).
 * Included page template `page-elements.php` with sample typography and form elements for quick styling.
 * Included page template `page-grid.php` with grid examples and documentaion.
