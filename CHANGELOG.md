@@ -1,6 +1,6 @@
 ### HEAD
 
-### 2.0.0 
+### 2.0.0 February 12, 2013
 
 * Changed back to mobile first responsive similar to the initial release.
 * Added changes from Satus HTML 2.0.0.
