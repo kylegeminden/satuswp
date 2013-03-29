@@ -1,5 +1,15 @@
 ### HEAD
 
+### 2.0.1 March 28, 2013
+
+* Class name changes for posts.
+* Updated first and last widget function in `cleanup.php`.
+* Updated nav walker function to allow for multiple dropdowns in `cleanup.php`.
+* Updated sidebar register function in `functions.php`.
+* Minor style updates to post thumbnails and comments.
+* Updates from Satus HTML 2.0.1.
+
+
 ### 2.0.0 February 12, 2013
 
 * Changed back to mobile first responsive similar to the initial release.
