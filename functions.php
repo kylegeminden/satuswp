@@ -53,9 +53,9 @@ function satus_widgets_init() {
   register_sidebar(array(
     'name' => __('Sidebar', 'satus'),
     'id' => 'sidebar-widget-area',
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
-    'after_widget' => '</section>',
-    'before_title' => '<h3 class="heading">',
+    'before_widget' => '<section class="widget %1$s %2$s"><div class="widget-inner">',
+    'after_widget' => '</div></section>',
+    'before_title' => '<h3 class="widget-title">',
     'after_title' => '</h3>',
   ));
 }
