@@ -156,13 +156,13 @@ function satus_widget_first_last_classes($params) {
   } else {
     $my_widget_num[$this_id] = 1;
   }
-  $class = 'class="widget widget-' . $my_widget_num[$this_id] . ' ';
+  $class = 'class="widget-' . $my_widget_num[$this_id] . ' ';
   if ($my_widget_num[$this_id] == 1) {
     $class .= 'widget-first ';
   } elseif ($my_widget_num[$this_id] == count($arr_registered_widgets[$this_id])) {
     $class .= 'widget-last ';
   }
-  $params[0]['before_widget'] = str_replace('class="', $class, $params[0]['before_widget']);
+  $params[0]['before_widget'] = preg_replace('/class=\"/', "$class", $params[0]['before_widget'], 1);
   return $params;
 }
 add_filter('dynamic_sidebar_params', 'satus_widget_first_last_classes');
@@ -333,7 +333,7 @@ class Satus_Navbar_Walker extends Walker_Nav_Menu {
     $class_names = $value = '';
     $classes = empty( $item->classes ) ? array() : (array) $item->classes;
     $classes[] = 'menu-item-' . $item->ID;    
-    if ($args->has_children && (integer)$depth < 1) {
+    if ($args->has_children) {
       $classes[]      = 'dropdown';
       // $li_attributes .= ' data-dropdown="dropdown"';
     }
@@ -347,7 +347,7 @@ class Satus_Navbar_Walker extends Walker_Nav_Menu {
     $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"'    : '';
     $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"'    : '';
     $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"'    : '';
-    $attributes .= ($args->has_children && (integer)$depth < 1)      ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
+    $attributes .= ($args->has_children)      ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
 
     $prepend = '<span class="menu-item-label">';
     $append = '</span>';
@@ -360,7 +360,7 @@ class Satus_Navbar_Walker extends Walker_Nav_Menu {
     $item_output .= '<a'. $attributes .'>';
     $item_output .= $args->link_before .$prepend.apply_filters( 'the_title', $item->title, $item->ID ).$append;
     $item_output .= $description.$args->link_after;
-    $item_output .= ($args->has_children && (integer)$depth < 1) ? ' <b class="caret"></b>' : '';
+    $item_output .= ($args->has_children) ? ' <b class="caret"></b>' : '';
     $item_output .= '</a>';
     $item_output .= $args->after;
     $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
