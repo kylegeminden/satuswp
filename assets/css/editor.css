@@ -67,6 +67,7 @@ figure,
 footer,
 header,
 hgroup,
+main,
 nav,
 section,
 summary {
@@ -96,8 +97,7 @@ a:focus {
   outline: thin dotted;
 }
 a:active,
-a:hover,
-a:visited {
+a:hover {
   outline: 0;
 }
 /* Typography */
@@ -382,8 +382,11 @@ a {
 a:hover {
   color: #a53318;
 }
+a:visited {
+  color: #792511;
+}
 a:focus {
-  color: #a53318;
+  color: #4c180b;
   outline: thin dotted;
 }
 ::-moz-selection {
@@ -659,6 +662,9 @@ textarea {
 }
 .button:hover {
   background: #a53318;
+  color: #ffffff;
+}
+a.button:visited {
   color: #ffffff;
 }
 /* ==========================================================================

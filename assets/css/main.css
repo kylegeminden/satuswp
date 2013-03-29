@@ -81,6 +81,7 @@ figure,
 footer,
 header,
 hgroup,
+main,
 nav,
 section,
 summary {
@@ -110,8 +111,7 @@ a:focus {
   outline: thin dotted;
 }
 a:active,
-a:hover,
-a:visited {
+a:hover {
   outline: 0;
 }
 /* Typography */
@@ -396,8 +396,11 @@ a {
 a:hover {
   color: #a53318;
 }
+a:visited {
+  color: #792511;
+}
 a:focus {
-  color: #a53318;
+  color: #4c180b;
   outline: thin dotted;
 }
 ::-moz-selection {
@@ -675,11 +678,13 @@ textarea {
   background: #a53318;
   color: #ffffff;
 }
+a.button:visited {
+  color: #ffffff;
+}
 /* =============================================================================
    Grid !n! !grd 
    ========================================================================== */
 .row {
-  padding: 0 20px;
   *zoom: 1;
 }
 .row:before,
@@ -698,28 +703,55 @@ textarea {
 .row:after {
   clear: both;
 }
-.row .row {
-  padding: 0;
+.row.nocolumns {
+  padding-left: 20px;
+  padding-right: 20px;
 }
-.row.fullwidth {
-  padding: 0;
+.row .row {
+  margin-left: -20px;
+  margin-right: -20px;
 }
 .row .row.fullwidth {
-  margin: 0;
+  margin-left: -40px;
+  margin-right: -40px;
+}
+.column {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 @media only screen and (min-width: 768px) {
   .row {
-    padding: 0 10px;
-  }
-  .row .row {
-    margin: 0 -10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .row.nocolumns {
-    padding: 0 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .row.fullwidth {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .row .row {
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .row .row.fullwidth {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .row .row.collapse {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .column {
     float: left;
-    padding: 0 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .width1of1 {
     width: 100%;
@@ -755,30 +787,46 @@ textarea {
 }
 @media only screen and (min-width: 992px) {
   .row {
-    padding: 0 15px;
-  }
-  .row .row {
-    margin: 0 -15px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   .row.nocolumns {
-    padding: 0 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .row .row {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+  .row .row.collapse {
+    padding-left: 15px;
+    padding-right: 15px;
   }
   .column {
-    padding: 0 15px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 @media only screen and (min-width: 1382px) {
   .row {
-    padding: 0 20px;
-  }
-  .row .row {
-    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .row.nocolumns {
-    padding: 0 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .row .row {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .row .row.collapse {
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .column {
-    padding: 0 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 /* =============================================================================
@@ -821,61 +869,59 @@ body {
   margin-left: 4px;
 }
 /* == posts, pages, and search results == */
-.post header {
+.post-header {
   margin-bottom: 1.125em;
 }
-.meta {
+.post-meta {
   margin-bottom: 1.125em;
 }
-.meta dl {
+.post-meta dl {
   margin-bottom: 0;
 }
-.meta dt,
-.meta dd {
+.post-meta dt,
+.post-meta dd {
   display: inline-block;
 }
-.meta dd {
+.post-meta dd {
   margin-left: 5px;
 }
-.meta .section ul,
-.meta .section li {
+.post-tags ul,
+.post-tags li {
   display: inline;
   padding-left: 0;
 }
-.meta .section li {
+.post-tags li {
   margin-left: 7px;
 }
-.meta .section li:first-child {
+.post-tags li:first-child {
   margin-left: 0;
 }
-.post .abstract {
+.post-description {
   margin-bottom: 1.125em;
   *zoom: 1;
 }
-.post .abstract:before,
-.post .abstract:after {
+.post-description:before,
+.post-description:after {
   content: "";
   display: table;
 }
-.post .abstract:after {
+.post-description:after {
   clear: both;
 }
-.post .abstract:before,
-.post .abstract:after {
+.post-description:before,
+.post-description:after {
   content: "";
   display: table;
 }
-.post .abstract:after {
+.post-description:after {
   clear: both;
 }
-.post .abstract p {
+.post-description p {
   margin: 0;
 }
-.post.summary .thumb {
-  float: left;
-  width: 100%;
-  max-width: 150px;
-  margin: 0.3em 1.125em 0 0;
+.post-thumb {
+  display: block;
+  margin-bottom: 1.125em;
 }
 .pagination {
   margin-bottom: 1.125em;
@@ -1104,6 +1150,22 @@ body {
   /* ==|== Base !base !n! ======================================================= */
   /* ==|== Header !hdr !n! ====================================================== */
   /* ==|== Content !cnt !n! ===================================================== */
+  /* == Posts == */
+  .post-thumb {
+    float: left;
+    width: 100%;
+    max-width: 150px;
+    margin: 0.3em 1.125em 0 0;
+  }
+  /* == Comments == */
+  .comment-list .children {
+    padding-left: 10px;
+  }
+  .comment header .avatar,
+  .comment header h3 {
+    float: left;
+    margin-right: 15px;
+  }
   /* ==|== Main !main !n! ======================================================= */
   /* ==|== Sidebar !sdb !n! ===================================================== */
   /* ==|== Footer !ftr !n! ====================================================== */
@@ -1130,15 +1192,6 @@ body {
   }
   .aligncenter {
     margin: 0 auto 1.125em;
-  }
-  /* == Comments == */
-  .comment-list .children {
-    padding-left: 10px;
-  }
-  .comment header .avatar,
-  .comment header h3 {
-    float: left;
-    margin-right: 15px;
   }
   /* ==|== Sidebar !sdb !n! ===================================================== */
   /* ==|== Footer !ftr !n! ====================================================== */
