@@ -1,6 +1,15 @@
-<div class="meta">
+<div class="post-meta">
 
-  <dl class="publish-date">
+  <?php if ( !is_author() ) : ?>
+  <dl class="post-author">
+    <dt><?php _e('By:', 'satus'); ?></dt>
+    <dd>
+      <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' ) ) ?>" rel="author"><?php echo get_the_author(); ?></a>
+    </dd>
+  </dl>
+  <?php endif; ?>
+
+  <dl class="post-date">
     <dt><?php _e('Posted on:', 'satus'); ?></dt>
       <dd>
         <time property="datePublished" datetime="<?php echo get_the_time('c'); ?>">
@@ -9,17 +18,8 @@
     </dd>
   </dl>
 
-  <?php if ( !is_author() ) : ?>
-  <dl class="author">
-    <dt><?php _e('Written by:', 'satus'); ?></dt>
-    <dd>
-      <a href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' ) ) ?>" rel="author"><?php echo get_the_author(); ?></a>
-    </dd>
-  </dl>
-  <?php endif; ?>
-
   <?php if ( has_tag() ) : ?>
-  <dl class="section">
+  <dl class="post-tags">
     <dt><?php _e('Tags:', 'satus'); ?></dt>
     <dd property="articleSection">
       <?php the_tags('<ul><li>', '</li><li>', '</li></ul>'); ?>
@@ -28,7 +28,7 @@
   <?php endif; ?>
   
   <?php if (comments_open()) : ?>
-  <dl class="comment-count">
+  <dl class="post-comment-count">
     <dt><?php _e('Comments:', 'satus'); ?></dt>
     <dd>
       <span property="UserComments"><?php comments_number('0', '1', '%'); ?></span> <span><?php
