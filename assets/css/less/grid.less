@@ -1,4 +1,4 @@
-@gutterDefault   : 20px;
+@gutter          : 20px;
 // use even numbers below if using pixels
 @gutter768Total  : 20px;
 @gutter992Total  : 30px;
@@ -18,23 +18,27 @@
 // Call each row in the corresponding media query. 
 // If you are in 768.less then use .row(768).
 // .home-blocks-wrap { .row(768); .clearfix(); }
-.row()            { padding: 0 @gutterDefault; }
+.row(nest)        { margin-left: -@gutter; margin-right: -@gutter; }
+.row(nocol)       { padding-left: @gutter; padding-right: @gutter; }
 
-.row(768)         { padding: 0 @gutter768; }
-.row(768, nest)   { margin: 0 -@gutter768; }
-.row(768, nocol)  { padding: 0 @gutter768Total; }
+.row(768)         { padding-left: @gutter768; padding-right: @gutter768; }
+.row(768, nest)   { margin-left: -@gutter768; margin-right: -@gutter768; }
+.row(768, nocol)  { padding-left: @gutter768Total; padding-right: @gutter768Total; }
 
-.row(992)         { padding: 0 @gutter992; }
-.row(992, nest)   { margin: 0 -@gutter992; }
-.row(992, nocol)  { padding: 0 @gutter992Total; }
+.row(992)         { padding-left: @gutter992; padding-right: @gutter992; }
+.row(992, nest)   { margin-left: -@gutter992; margin-right: -@gutter992; }
+.row(992, nocol)  { padding-left: @gutter992Total;  padding-right: @gutter992Total; }
 
-.row(1382)        { padding: 0 @gutter1382; }
-.row(1382, nest)  { margin: 0 -@gutter1382; }
-.row(1382, nocol) { padding: 0 @gutter1382Total; }
+.row(1382)        { padding-left: @gutter1382; padding-right: @gutter1382; }
+.row(1382, nest)  { margin-left: -@gutter1382; margin-right: -@gutter1382; }
+.row(1382, nocol) { padding-left: @gutter1382Total; padding-right: @gutter1382Total; }
 
-.row(ie)          { padding: 0 @gutterIE; }
-.row(ie, nest)    { margin: 0 -@gutterIE; }
-.row(ie, nocol)   { padding: 0 @gutterIETotal; }
+.row(ie)          { padding-left: @gutterIE; padding-right: @gutterIE; }
+.row(ie, nest)    { margin-left: -@gutterIE; margin-right: -@gutterIE; }
+.row(ie, nocol)   { padding-left: @gutterIETotal; padding-right: @gutterIETotal; }
+
+.row(nopadding)   { padding-left: 0; padding-right: 0; }
+.row(nomargin)    { margin-left: 0; margin-right: 0; }
 
 // COLUMNS
 // ----------------------------------------------
@@ -57,11 +61,11 @@
 // Call each gutter width in the corresponding media query.
 // If you are in 768.less then use .gutter(768);
 //  #main { .column(2,3); .gutter(768); }
-.gutter()     { padding: 0 @gutterDefault; }
-.gutter(768)  { padding: 0 @gutter768; }
-.gutter(992)  { padding: 0 @gutter992; }
-.gutter(1382) { padding: 0 @gutter1382; }
-.gutter(ie)   { padding: 0 @gutterIE; }
+.column()     { padding-left: @gutter; padding-right: @gutter; }
+.column(768)  { padding-left: @gutter768; padding-right: @gutter768; }
+.column(992)  { padding-left: @gutter992; padding-right: @gutter992; }
+.column(1382) { padding-left: @gutter1382; padding-right: @gutter1382; }
+.column(ie)   { padding-left: @gutterIE; padding-right: @gutterIE; }
 
 // COLUMN OFFSET
 // ---------------------------------------------------
@@ -97,33 +101,47 @@
   .modern() {
 
     .row {
-      .gutter();
       .clearfix();
+      &.nocolumns {
+        .row(nocol);
+      }
       .row {
-        padding: 0;
+        .row(nest);
+        &.fullwidth {
+          margin-left: -(@gutter * 2);
+          margin-right: -(@gutter * 2);
+        }
       }
-      &.fullwidth {
-        padding: 0;
-      }
-      .row.fullwidth {
-        margin: 0;
-      }
+    }
+    .column {
+      .column();
     }
 
     @media only screen and (min-width: 768px) {
 
       .row {
         .row(768);
-        .row {
-          .row(768,nest);
-        }
         &.nocolumns {
           .row(768,nocol);
+        }
+        &.fullwidth {
+          .row(nopadding);
+        }
+        .row {
+          .row(768,nest);
+          .row(nopadding);
+          &.fullwidth {
+            .row(nomargin);
+          }
+          &.collapse {
+            .row(nomargin);
+            .row(768);
+          }
         }
       }
       .column {
         float: left;
-        .gutter(768);
+        .column(768);
       }
       .width1of1 { .width(1,1); }
       .width1of2, .width2of4 { .width(1,2); }
@@ -142,15 +160,18 @@
 
       .row {
         .row(992);
-        .row {
-          .row(992,nest);
-        }
         &.nocolumns {
           .row(992,nocol);
         }
+        .row {
+          .row(992,nest);
+          &.collapse {
+            .row(992);
+          }
+        }
       }
       .column {
-        .gutter(992);
+        .column(992);
       }
 
     } // end 992
@@ -159,15 +180,18 @@
 
       .row {
         .row(1382);
-        .row {
-          .row(1382,nest);
-        }
         &.nocolumns {
           .row(1382,nocol);
         }
+        .row {
+          .row(1382,nest);
+          &.collapse {
+            .row(1382);
+          }
+        }
       }
       .column {
-        .gutter(1382);
+        .column(1382);
       }
 
     } // end 1382
@@ -179,23 +203,27 @@
     .row {
       .row(ie);
       .clearfix();
-      .row {
-        .row(ie,nest);
-        padding: 0;
-      }
       &.nocolumns {
         .row(ie,nocol);
       }
       &.fullwidth {
-        padding: 0;
+        .row(nopadding)
       }
-      .row.fullwidth {
-        margin: 0;
+      .row {
+        .row(ie,nest);
+        .row(nopadding);
+        &.fullwidth {
+          .row(nomargin);
+        }
+        &.collapse {
+          .row(nomargin);
+          .row(ie);
+        }
       }
     }
     .column {
       float: left;
-      .gutter(ie);
+      .column(ie);
     }
     .width1of1 { .width(1,1); }
     .width1of2, .width2of4 { .width(1,2); }

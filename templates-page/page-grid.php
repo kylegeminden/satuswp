@@ -55,75 +55,87 @@ Template Name: Grid
   }
 </style>
 
-<header>
-  <hgroup>
-    <h1>The Grid</h1>
-    <h2>Inspired from <a href="https://github.com/stubbornella/oocss/tree/master/core/grid">Object Oriented CSS Framework</a></h2>
-  </hgroup>
-</header>
+<div class="row nocolumns">
+  <header>
+    <hgroup>
+      <h1>The Grid</h1>
+      <h2>Inspired from <a href="https://github.com/stubbornella/oocss/tree/master/core/grid">Object Oriented CSS Framework</a></h2>
+    </hgroup>
+  </header>
+  
+  <p class="h4">The grid is used for dividing space fractionaly and can be nested.</p>
+  
+  <hr>
+</div>
 
-<p class="h4">The grid is used for dividing space fractionaly and can be nested.</p>
+<div class="row nocolumns">
+  <h2>Grid Classes</h2>
+  <hr>
+  
+  <dl>
+    <dt><code>.row</code></dt>
+    <dd>Contains the columns. The outermost rows contain padding. Nested rows have the padding removed and negative left and right margin added for grid alignment.</dd>
+    <dt><code>.nocolumns</code></dt>
+    <dd>Extension for the row class for outermost rows that contain no columns. It doubles the padding of the row to ensure proper grid alignment.</dd>
+    <dt><code>.fullwidth</code></dt>
+    <dd>Extension for the row class for rows that need to be full width. It removes the padding and for nested rows it removes negative margin.</dd>
+    <dt><code>.collapse</code></dt>
+    <dd>Extension for nested rows when a background color is needed. It removes the negative margin for grid alignment and adds padding.</dd>
+    <dt><code>.column</code></dt>
+    <dd>Base class for making columns. Contains float and padding. By default columns are set to stack when the screen width is below 768 pixels.</dd>
+    <dt><code>.widthXofY</code></dt>
+    <dd>Extension for the column class and can be used independently if desired. Widths can be thirds, quarters, fifths, halves or full. Total columns in a row must equal 1, for example &frac13; plus &frac23; equals 1.</dd>
+  </dl>
+</div>
 
-<h2>Grid Classes</h2>
-<hr>
+<div class="row nocolumns">
+  <h2>Responsive Visibility Classes</h2>
+  <hr>
+  <p>While these are not specific to the grid, these are helpful for quickly showing and hiding elements on a page. These are not meant for creating entirely different page layouts and should be used sparingly.</p>
+  <p>Each class name is associated with the query width and up from that, so you could have an element with the classes <code>.show768.hide0</code> to hide on all but the 768 query width or you could use <code>.show768</code> to show an element from 768 and up.</p>
+  <dl class="responsive-vis-list">
+    <dt>Class Names</dt>
+    <dd>
+      <ol>
+        <li><code>.hide0</code> <code>.show0</code></li>
+        <li><code>.hide480</code> <code>.show480</code></li>
+        <li><code>.hide768</code> <code>.show768</code></li>
+        <li><code>.hide800</code> <code>.show800</code></li>
+        <li><code>.hide992</code> <code>.show992</code></li>
+        <li><code>.hide1382</code> <code>.show1382</code></li>
+      </ol>
+    </dd>
+  </dl>
 
-<dl>
-  <dt><code>.row</code></dt>
-  <dd>Contains the columns. The outermost rows contain padding. Nested rows have the padding removed and negative left and right margin added for grid alignment.</dd>
-  <dt><code>.nocolumns</code></dt>
-  <dd>Extension for the row class for outermost rows that contain no columns. It doubles the padding of the row to ensure proper grid alignment.</dd>
-  <dt><code>.fullwidth</code></dt>
-  <dd>Extension for the row class for rows that contain no columns and need to be full width. It removes the padding and negative margin for nested rows.</dd>
-  <dt><code>.column</code></dt>
-  <dd>Base class for making columns. Contains float and padding. By default columns are set to stack when the screen width is below 768 pixels.</dd>
-  <dt><code>.widthXofY</code></dt>
-  <dd>Extension for the column class and can be used independently if desired. Widths can be thirds, quarters, fifths, halves or full. Total columns in a row must equal 1, for example &frac13; plus &frac23; equals 1.</dd>
-</dl>
+  <h3>Visible on&hellip;</h3>
+  <ol class="responsive-utilities-test">
+    <li>0<span class="">✔ 0</span></li>
+    <li>480<span class="show480 hide0">✔ 480</span></li>
+    <li>600<span class="show600 hide0">✔ 600</span></li>
+    <li>768<span class="show768 hide0">✔ 768</span></li>
+    <li>992<span class="show992 hide0">✔ 992</span></li>
+    <li>1382<span class="show1382 hide0">✔ 1382</span></li>
+  </ol>
 
-<h2>Responsive Visibility Classes</h2>
-<hr>
-<p>While these are not specific to the grid, these are helpful for quickly showing and hiding elements on a page. These are not meant for creating entirely different page layouts and should be used sparingly.</p>
-<p>Each class name is associated with the query width and up from that, so you could have an element with the classes <code>.show768.hide0</code> to hide on all but the 768 query width or you could use <code>.show768</code> to show an element from 768 and up.</p>
-<dl class="responsive-vis-list">
-  <dt>Class Names</dt>
-  <dd>
-    <ol>
-      <li><code>.hide0</code> <code>.show0</code></li>
-      <li><code>.hide480</code> <code>.show480</code></li>
-      <li><code>.hide768</code> <code>.show768</code></li>
-      <li><code>.hide800</code> <code>.show800</code></li>
-      <li><code>.hide992</code> <code>.show992</code></li>
-      <li><code>.hide1382</code> <code>.show1382</code></li>
-    </ol>
-  </dd>
-</dl>
+  <h3>Hidden on&hellip;</h3>
+  <ol class="responsive-utilities-test hidden-on">
+    <li>0<span class="hide0">✔ 0</span></li>
+    <li>480<span class="hide480">✔ 480</span></li>
+    <li>600<span class="hide600">✔ 600</span></li>
+    <li>768<span class="hide768">✔ 768</span></li>
+    <li>992<span class="hide992">✔ 992</span></li>
+    <li>1382<span class="hide1382">✔ 1382</span></li>
+  </ol>
+</div>
 
-<h3>Visible on&hellip;</h3>
-<ol class="responsive-utilities-test">
-  <li>0<span class="">✔ 0</span></li>
-  <li>480<span class="show480 hide0">✔ 480</span></li>
-  <li>600<span class="show600 hide0">✔ 600</span></li>
-  <li>768<span class="show768 hide0">✔ 768</span></li>
-  <li>992<span class="show992 hide0">✔ 992</span></li>
-  <li>1382<span class="show1382 hide0">✔ 1382</span></li>
-</ol>
-
-<h3>Hidden on&hellip;</h3>
-<ol class="responsive-utilities-test hidden-on">
-  <li>0<span class="hide0">✔ 0</span></li>
-  <li>480<span class="hide480">✔ 480</span></li>
-  <li>600<span class="hide600">✔ 600</span></li>
-  <li>768<span class="hide768">✔ 768</span></li>
-  <li>992<span class="hide992">✔ 992</span></li>
-  <li>1382<span class="hide1382">✔ 1382</span></li>
-</ol>
-
-<h2>Grid Examples</h2>
-<hr>
-
-<h3>Fifths</h3>
-
-<pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width2of5"&gt;&hellip;&lt;/div&gt;</li><li>  &lt;div class="column width3of5"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+<div class="row nocolumns">
+  <h2>Grid Examples</h2>
+  <hr>
+  
+  <h3>Fifths</h3>
+  
+  <pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width2of5"&gt;&hellip;&lt;/div&gt;</li><li>  &lt;div class="column width3of5"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+</div>
 
 <div class="row">
   <div class="column width1of5">
@@ -185,9 +197,11 @@ Template Name: Grid
   </div>
 </div>
 
-<h3>Fourths</h3>
-
-<pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width3of4"&gt;&hellip;&lt;/div&gt;</li><li>  &lt;div class="column width1of4"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+<div class="row nocolumns">
+  <h3>Fourths</h3>
+  
+  <pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width3of4"&gt;&hellip;&lt;/div&gt;</li><li>  &lt;div class="column width1of4"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+</div>
 
 <div class="row">
   <div class="column width1of4">
@@ -234,9 +248,11 @@ Template Name: Grid
   </div>
 </div>
 
-<h3>Thirds</h3>
-
-<pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width1of3"&gt;&hellip;&lt;/div&gt;</li><li>  &lt;div class="column width2of3"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+<div class="row nocolumns">
+  <h3>Thirds</h3>
+  
+  <pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width1of3"&gt;&hellip;&lt;/div&gt;</li><li>  &lt;div class="column width2of3"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+</div>
 
 <div class="row">
   <div class="column width1of3">
@@ -264,9 +280,11 @@ Template Name: Grid
   </div>
 </div>
 
-<h3>Halves</h3>
-
-<pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width1of2"&gt;&hellip;&lt;/div&gt;</li><li>  &lt;div class="column width1of2"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+<div class="row nocolumns">
+  <h3>Halves</h3>
+  
+  <pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width1of2"&gt;&hellip;&lt;/div&gt;</li><li>  &lt;div class="column width1of2"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+</div>
 
 <div class="row">
   <div class="column width1of2">
@@ -279,9 +297,11 @@ Template Name: Grid
   </div>
 </div>
 
-<h3>Full</h3>
-
-<pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width1of1"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+<div class="row nocolumns">
+  <h3>Full</h3>
+  
+  <pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width1of1"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+</div>
 
 <div class="row">
   <div class="column width1of1">
@@ -291,10 +311,12 @@ Template Name: Grid
 </div>
 <!-- End Grid Examples -->
 
-<h2>Grid Nesting</h2>
-<hr>
-
-<pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width2of3"&gt;</li><li>    &lt;div class="row"&gt;</li><li>      &lt;div class="column width1of2"&gt;&hellip;&lt;/div&gt;</li><li>      &lt;div class="column width1of2"&gt;&hellip;&lt;/div&gt;</li><li>    &lt;/div&gt;</li><li>  &lt;/div&gt;</li><li>  &lt;div class="column width1of3"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+<div class="row nocolumns">
+  <h2>Grid Nesting</h2>
+  <hr>
+  
+  <pre><ol><li>&lt;div class="row"&gt;</li><li>  &lt;div class="column width2of3"&gt;</li><li>    &lt;div class="row"&gt;</li><li>      &lt;div class="column width1of2"&gt;&hellip;&lt;/div&gt;</li><li>      &lt;div class="column width1of2"&gt;&hellip;&lt;/div&gt;</li><li>    &lt;/div&gt;</li><li>  &lt;/div&gt;</li><li>  &lt;div class="column width1of3"&gt;&hellip;&lt;/div&gt;</li><li>&lt;/div&gt;</li></ol></pre>
+</div>
 
 <div class="row">
   <div class="column width2of3">
