@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class() ?> vocab="http://schema.org/" typeof="BlogPosting">
+<article <?php post_class() ?> vocab="http://schema.org/" typeof="BlogPosting">
 
   <header class="post-header">
     <h1 property="headline"><?php the_title(); ?></h1> 
