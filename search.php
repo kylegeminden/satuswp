@@ -6,9 +6,7 @@
   <?php get_template_part( 'templates/content', 'search' ); ?>
   <?php endwhile; ?>
 
-  <?php if ( $wp_query->max_num_pages > 1 ) : ?>
-    <?php satus_posts_nav(POSTS_NAV_PREV, POSTS_NAV_NEXT); ?>
-  <?php endif; ?>
+  <?php satus_posts_nav(POSTS_NAV_PREV, POSTS_NAV_NEXT); ?>
 
 <?php else : ?>     
 
