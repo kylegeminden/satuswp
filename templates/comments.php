@@ -1,5 +1,5 @@
 <?php if (post_password_required()) : ?>
-  <section id="comments">
+  <section class="comments">
       
     <p><?php _e('This post is password protected. Enter the password to view comments.', 'satus'); ?></p>
 
@@ -10,7 +10,7 @@
 <?php function satus_comments($comment, $args, $depth) {
   $GLOBALS['comment'] = $comment; ?>
   <li <?php comment_class(); ?>>
-    <article id="comment-<?php comment_ID(); ?>" class="comment" property="comment" vocab="http://schema.org/" typeof="UserComments">
+    <article class="comment comment-<?php comment_ID(); ?>" property="comment" vocab="http://schema.org/" typeof="UserComments">
 
       <header>
         <?php echo get_avatar($comment,$size='40'); ?>
@@ -40,9 +40,8 @@
     </article>
 <?php } ?>
 
-
 <?php if (have_comments()) : ?>
-  <section id="comments">
+  <section class="comments">
 
     <h2><?php comments_number(__('No Responses to', 'satus'), __('One Response to', 'satus'), __('% Responses to', 'satus') ); ?> &#8220;<?php the_title(); ?>&#8221;</h2>
 
@@ -56,15 +55,15 @@
         <nav class="comments-nav pagination">
           <h3 class="assistive-text"><?php _e('Comments Navigation', 'satus') ?></h3>
           <?php paginate_comments_links(array(
-            'prev_text' => '&larr;',
-            'next_text' => '&rarr;'
+            'prev_text' => POSTS_NAV_PREV,
+            'next_text' => POSTS_NAV_NEXT
             )); ?>
         </nav>
       </footer>
       
     <?php endif; // check for comment navigation ?>
 
-    <?php if (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
+    <?php if (!comments_open()) : ?>
         
       <p><?php _e('Comments are closed.', 'satus'); ?></p>
       
@@ -73,8 +72,17 @@
   <!-- /#comments -->
 <?php endif; ?>
 
-<?php if (!have_comments() && !comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
-  <section id="comments">
+<?php if (!have_comments() && comments_open()) : ?>
+  <section class="comments">
+
+    <h2><?php comments_number(__('No Responses to', 'satus'), __('One Response to', 'satus'), __('% Responses to', 'satus') ); ?> &#8220;<?php the_title(); ?>&#8221;</h2>
+      
+  </section>
+  <!-- /#comments -->
+<?php endif; ?>
+
+<?php if (!have_comments() && !comments_open()) : ?>
+  <section class="comments">
       
   <p><?php _e('Comments are closed.', 'satus'); ?></p>
 
@@ -83,9 +91,7 @@
 <?php endif; ?>
 
 <?php if (comments_open()) : ?>
-  <section id="respond">
-
-    <h2><?php comment_form_title(__('Leave a Reply', 'satus'), __('Leave a Reply to %s', 'satus')); ?></h2>
+  <section class="respond">
 
     <p class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></p>
 
@@ -95,23 +101,7 @@
 
     <?php else : ?>
 
-      <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="comment-form">
-        <?php if (is_user_logged_in()) : ?>
-          <p><?php printf(__('Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', 'satus'), get_option('siteurl'), $user_identity); ?> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php __('Log out of this account', 'satus'); ?>"><?php _e('Log out &raquo;', 'satus'); ?></a></p>
-        <?php else : ?>
-          <label for="author"><?php _e('Name', 'satus'); if ($req) _e(' <span class="required">*</span>', 'satus'); ?></label>
-          <input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="30" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> <?php if ($req) echo "required"; ?>>
-          <label for="email"><?php _e('Email <small>(will not be published)</small>', 'satus'); if ($req) _e(' <span class="required">*</span>', 'satus'); ?></label>
-          <input type="email" class="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="30" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?>  <?php if ($req) echo "required"; ?>>
-          <label for="url"><?php _e('Website', 'satus'); ?></label>
-          <input type="url" class="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="30" tabindex="3">
-        <?php endif; ?>
-        <label for="comment"><?php _e('Comment', 'satus'); if ($req) _e(' <span class="required">*</span>', 'satus'); ?></label>
-        <textarea name="comment" id="comment" cols="45" rows="8" tabindex="4" <?php if ($req) echo "aria-required='true'"; ?> <?php if ($req) echo "required"; ?>></textarea>
-        <p><input name="submit" class="button" type="submit" id="submit" tabindex="5" value="<?php _e('Submit Comment', 'satus'); ?>"></p>
-        <?php comment_id_fields(); ?>
-        <?php do_action('comment_form', $post->ID); ?>
-      </form>
+      <?php comment_form(); ?>
 
     <?php endif; // if registration required and not logged in ?>
     
