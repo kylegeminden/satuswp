@@ -153,28 +153,24 @@
   clear: both;
 }
 
-#comment-form {
+#commentform {
   .form-allowed-tags code {
     display: block;
   }
-  .label {
-    display: block;
-    label {
-      display: inline-block;
-    }
-    span {
-      color: #a72c2c;
-    }
-  }
-  textarea#comment {
-    max-width: 400px;
+  .required {
+    color: #a72c2c;
   }
 }
 
-#comment-form input[type=text],
-#comment-form input[type=email],
-#comment-form input[type=url] {
-  max-width: 400px;
+.comment-form-url input,
+.comment-form-email input,
+.comment-form-author input {
+  max-width: 350px;
+  width: 100%;
+}
+.comment-form-comment textarea {
+  max-width: 450px;
+  width: 100%;
 }
 
 /* == author == */
