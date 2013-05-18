@@ -655,7 +655,8 @@ textarea {
   -webkit-appearance: none;
 }
 /* buttons */
-.button {
+.button,
+#submit {
   display: inline-block;
   padding: 8px 16px;
   background: #d2411e;
@@ -673,7 +674,8 @@ textarea {
   transition: background-color 0.2s 0 linear;
   -webkit-appearance: none;
 }
-.button:hover {
+.button:hover,
+#submit:hover {
   background: #a53318;
   color: #ffffff;
 }
@@ -975,25 +977,21 @@ body {
 .comment [property="commentText"] {
   clear: both;
 }
-#comment-form .form-allowed-tags code {
+#commentform .form-allowed-tags code {
   display: block;
 }
-#comment-form .label {
-  display: block;
-}
-#comment-form .label label {
-  display: inline-block;
-}
-#comment-form .label span {
+#commentform .required {
   color: #a72c2c;
 }
-#comment-form textarea#comment {
-  max-width: 400px;
+.comment-form-url input,
+.comment-form-email input,
+.comment-form-author input {
+  max-width: 350px;
+  width: 100%;
 }
-#comment-form input[type=text],
-#comment-form input[type=email],
-#comment-form input[type=url] {
-  max-width: 400px;
+.comment-form-comment textarea {
+  max-width: 450px;
+  width: 100%;
 }
 /* == author == */
 .author .bio .avatar {

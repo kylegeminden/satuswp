@@ -642,7 +642,8 @@ textarea {
   -webkit-appearance: none;
 }
 /* buttons */
-.button {
+.button,
+#submit {
   display: inline-block;
   padding: 8px 16px;
   background: #d2411e;
@@ -660,7 +661,8 @@ textarea {
   transition: background-color 0.2s 0 linear;
   -webkit-appearance: none;
 }
-.button:hover {
+.button:hover,
+#submit:hover {
   background: #a53318;
   color: #ffffff;
 }
