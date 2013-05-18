@@ -1,4 +1,4 @@
-<footer id="footer" role="contentinfo">
+<footer class="footer" role="contentinfo">
   <div class="row">
     <section class="column width1of1">
 
@@ -35,8 +35,8 @@
 <script>
   var _gaq=[['_setAccount','<?php echo GOOGLE_ANALYTICS_ID; ?>'],['_trackPageview']];
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
+  g.src='//www.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
 <?php endif; ?>
 
