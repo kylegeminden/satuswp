@@ -7,6 +7,7 @@
 /**
  * #main and #sidebar CSS classes
 */
+
 function satus_main_class() {
   if (satus_display_sidebar()) {
     $class = MAIN_CLASSES;
@@ -23,6 +24,7 @@ function satus_sidebar_class() {
 * Truncate title on recent posts widget etc.,
 * use the following tag in desired template file()s to shorten title length <?php satus_short_title(20) ?>
 */
+
 function satus_short_title($limit = 40){
   $title = get_the_title();
   $pad = "&hellip;";
@@ -37,6 +39,7 @@ function satus_short_title($limit = 40){
 /*
  * Change default excerpt length - this is use to set a large number for the excerpt length that way the following satus excerpt can make multiple lengths in multiple locations
 */
+
 function satus_default_excerpt_length($length) {
   return 500;
 }
@@ -49,6 +52,7 @@ add_filter('excerpt_length', 'satus_default_excerpt_length');
  * <?php satus_the_excerpt(40,'characters'); ?>
  * (can remove ,'characters' if words rather than characters desired
 */
+
 // Limit String Characters
 function satus_limit_string_chars($string,$char_limit)
 {
@@ -64,7 +68,7 @@ function satus_limit_string_words($string,$word_limit)
   return implode(' ', $words);
 }
 //The Excerpt
-function satus_the_excerpt($max_length='',$limit_type='words'){
+function satus_the_excerpt($max_length='',$limit_type='words',$read_more=true,$class='excerpt'){
   if($max_length == ''){ $shorten_post_value = get_option('shorten_post_value'); }
   else $shorten_post_value = $max_length;
   $shortened_content = get_the_excerpt();
@@ -72,13 +76,14 @@ function satus_the_excerpt($max_length='',$limit_type='words'){
   else if($shorten_post_value == 'full'){ the_content(); }
   else {
     if($limit_type == 'characters'){
-      echo '<p>' . satus_limit_string_chars($shortened_content,$shorten_post_value) . '&hellip;';
+      echo '<p class="'.$class.'">' . satus_limit_string_chars($shortened_content,$shorten_post_value) . '&hellip;';
       }
     else {
-      echo '<p>' . satus_limit_string_words($shortened_content,$shorten_post_value) . '&hellip;';
-      }?>
+      echo '<p class="'.$class.'">' . satus_limit_string_words($shortened_content,$shorten_post_value) . '&hellip;';
+      }
+    if($read_more) { ?>
     <a href="<?php the_permalink(); ?>" class="read-more" title="Read Full Post" rel="bookmark"><?php _e('read&nbsp;more', 'satus'); ?></a></p>
-    <?php
+    <?php }
   }
 }
 
@@ -86,6 +91,7 @@ function satus_the_excerpt($max_length='',$limit_type='words'){
  * Checks to see if page is grandparent call with is_tree(id) in template file(s)
  * Unfortunately I can't remember who to give credit for this one
 */
+
 function is_tree($pid) {      // $pid = The ID of the page we're looking for pages underneath
   global $post;         // load details about this page
   $anc = get_post_ancestors( $post->ID );
@@ -103,7 +109,7 @@ function is_tree($pid) {      // $pid = The ID of the page we're looking for pag
 /**
  * Post Pagination @link bavotasan.com/2012/a-better-wp_link_pages-for-wordpress/
 */
-if(!function_exists('satus_paged_nav')):
+
 function satus_paged_nav( $args = '' ) {
   $defaults = array(
     'before' => '<nav class="paged-nav pagination"><h2 class="visuallyhidden">' . __('Pagination Navigation', 'satus') . '</h2>', 
@@ -158,12 +164,11 @@ function satus_paged_nav( $args = '' ) {
     echo $output;
   return $output;
 }
-endif;
 
 /**
  * Posts Pagination @link wp-snippets.com/pagination-without-plugin/
 */
-if(!function_exists('satus_posts_nav')):
+
 function satus_posts_nav($prev = '&larr;', $next = '&rarr;') {
   global $wp_query, $wp_rewrite;
   $wp_query->query_vars['paged'] > 1 ? $current = $wp_query->query_vars['paged'] : $current = 1;
@@ -180,6 +185,5 @@ function satus_posts_nav($prev = '&larr;', $next = '&rarr;') {
     $pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . 'page/%#%/', 'paged' );
   echo '<nav class="posts-nav pagination"><h2 class="visuallyhidden">' . __('Posts Navigation', 'satus') . '</h2>' . paginate_links( $pagination ) . '</nav>' ;
 }
-endif;
 
 ?>
