@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class('search-result') ?>>
+<article <?php post_class('search-result') ?>>
   
   <header class="post-header">
     <h2 property="headline">
@@ -15,7 +15,7 @@
         <?php the_post_thumbnail('thumbnail', 'property=image'); ?>
       </a>
     <?php endif; ?>
-    <?php satus_the_excerpt( POST_EXCERPT_LENGTH ); ?>
+    <?php satus_the_excerpt( POST_EXCERPT_LENGTH, 'words', EXCERPT_READ_MORE, EXCERPT_CLASS ); ?>
   </div>
 
 </article>
