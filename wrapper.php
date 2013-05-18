@@ -8,16 +8,16 @@
 
 <?php get_template_part('templates/header'); ?>
 
-<div id="wrap">
-  <div id="content" class="row">
+<div class="wrap">
+  <div class="content row">
 
-    <div id="main" class="<?php echo satus_main_class(); ?>" role="main">
+    <div class="main <?php echo satus_main_class(); ?>" role="main">
       <?php include satus_template_path(); ?>
     </div>
     <!-- /#main -->
     
     <?php if(satus_display_sidebar()) : ?>
-      <aside id="sidebar" class="<?php echo satus_sidebar_class(); ?>" role="complementary">
+      <aside class="sidebar <?php echo satus_sidebar_class(); ?>" role="complementary">
         <h2 class="visuallyhidden"><?php _e( 'Sidebar', 'satus' ); ?></h2>
         <?php get_template_part('templates/sidebar'); ?>
       </aside>
