@@ -37,24 +37,25 @@ function satus_get_search_form() {
 add_filter('get_search_form', 'satus_get_search_form');
 
 /**
- * Makes pretty permalinks for the search results
- * @link txfx.net/wordpress-plugins/nice-search/
-*/
+ * Redirects search results from /?s=query to /search/query/, converts %20 to +
+ *
+ * @link http://txfx.net/wordpress-plugins/nice-search/
+ */
 function satus_nice_search_redirect() {
-  if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
-    wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var( 's' )))), 301);
+  global $wp_rewrite;
+  if (!isset($wp_rewrite) || !is_object($wp_rewrite) || !$wp_rewrite->using_permalinks()) {
+    return;
+  }
+
+  $search_base = $wp_rewrite->search_base;
+  if (is_search() && !is_admin() && strpos($_SERVER['REQUEST_URI'], "/{$search_base}/") === false) {
+    wp_redirect(home_url("/{$search_base}/" . urlencode(get_query_var('s'))));
     exit();
   }
 }
-add_action('template_redirect', 'satus_nice_search_redirect');
-function satus_search_query($escaped = true) {
-  $query = apply_filters('satus_search_query', get_query_var('s'));
-  if ($escaped) {
-      $query = esc_attr( $query );
-  }
-    return urldecode($query);
+if (NICE_SEARCH) {
+  add_action('template_redirect', 'satus_nice_search_redirect');
 }
-add_filter('get_search_query', 'satus_search_query');
 
 /**
  * Fix for empty search queries redirecting to home page
@@ -75,12 +76,12 @@ add_filter('request', 'satus_request_filter');
  * Don't return the default description in the RSS feed if it hasn't been changed
  * @link github.com/retlehs/roots
  */
-function mad_remove_default_description($bloginfo) {
+function satus_remove_default_description($bloginfo) {
   $default_tagline = 'Just another WordPress site';
 
   return ($bloginfo === $default_tagline) ? '' : $bloginfo;
 }
-add_filter('get_bloginfo_rss', 'mad_remove_default_description');
+add_filter('get_bloginfo_rss', 'satus_remove_default_description');
 
 /**
  * Removes the WordPress version from out of the <head>
@@ -197,8 +198,9 @@ function satus_caption($output, $attr, $content) {
   $output .= '</figure>';
   return $output;
 }
-
-add_filter('img_caption_shortcode', 'satus_caption', 10, 3);
+if (CAPTION) {
+  add_filter('img_caption_shortcode', 'satus_caption', 10, 3);
+}
 
 /**
  * Clean up gallery_shortcode() plus added ability for custom classes via inc/config.php
@@ -275,8 +277,10 @@ function satus_gallery($attr) {
   return $output;
 }
 //deactivate WordPress function and activate own function
-remove_shortcode('gallery');
-add_shortcode('gallery', 'satus_gallery');
+if (GALLERY) {
+  remove_shortcode('gallery');
+  add_shortcode('gallery', 'satus_gallery');
+}
 
 /**
  * Custom Walker that adds menu-item-slug (menu item title) and description
