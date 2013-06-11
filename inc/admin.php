@@ -1,8 +1,9 @@
 <?php
 
 /**
- * @link justintadlock.com/archives/2009/09/10/adding-and-using-custom-user-profile-fields
-*/
+ * @link http://justintadlock.com/archives/2009/09/10/adding-and-using-custom-user-profile-fields
+ */
+
 add_action( 'show_user_profile', 'satus_extra_profile_fields' );
 add_action( 'edit_user_profile', 'satus_extra_profile_fields' );
 function satus_extra_profile_fields( $user ) { ?>
@@ -65,9 +66,8 @@ add_action( 'edit_user_profile_update', 'satus_save_extra_profile_fields' );
 function satus_save_extra_profile_fields( $user_id ) {
   if ( !current_user_can( 'edit_user', $user_id ) )
     return false;
-  /*
-   * Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID
-  */
+  
+  // Copy and paste the following line for additional fields. Make sure to change 'twitter' to the field ID
   update_user_meta( $user_id, 'googleprofile', $_POST['googleprofile'] );
   update_user_meta( $user_id, 'twitter', $_POST['twitter'] );
   update_user_meta( $user_id, 'facebook', $_POST['facebook'] );

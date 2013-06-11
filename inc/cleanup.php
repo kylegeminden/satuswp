@@ -2,8 +2,7 @@
 
 /**
  * Clean up dashboard
- * @link deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
-*/
+ */
 function satus_remove_dashboard_widgets() {
   remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
   remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
@@ -14,8 +13,8 @@ add_action('admin_init', 'satus_remove_dashboard_widgets');
 
 /**
  * allow more tags in TinyMCE including iframes
- * @link github.com/retlehs/roots/
-*/
+ * @link https://github.com/retlehs/roots/
+ */
 function satus_change_mce_options($options) {
   $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src],script[charset|defer|language|src|type]';
   if (isset($initArray['extended_valid_elements'])) {
@@ -29,7 +28,7 @@ add_filter('tiny_mce_before_init', 'satus_change_mce_options');
 
 /** 
  * Tell WordPress to use searchform.php from the templates/ directory
- * @link github.com/retlehs/roots/
+ * @link https://github.com/retlehs/roots/
  */
 function satus_get_search_form() {
   locate_template('/templates/searchform.php', true, true);
@@ -74,7 +73,7 @@ add_filter('request', 'satus_request_filter');
 
 /**
  * Don't return the default description in the RSS feed if it hasn't been changed
- * @link github.com/retlehs/roots
+ * @link https://github.com/retlehs/roots
  */
 function satus_remove_default_description($bloginfo) {
   $default_tagline = 'Just another WordPress site';
@@ -85,7 +84,7 @@ add_filter('get_bloginfo_rss', 'satus_remove_default_description');
 
 /**
  * Removes the WordPress version from out of the <head>
-*/
+ */
 remove_action('wp_head', 'wp_generator');
 
 /**
@@ -95,7 +94,7 @@ add_filter('the_generator', '__return_false');
 
 /** 
  * Add and remove body_class() classes
- * @link github.com/retlehs/roots/
+ * @link https://github.com/retlehs/roots/
  */
 function satus_body_class($classes) {
   // Add post/page slug
@@ -108,7 +107,7 @@ add_filter('body_class', 'satus_body_class');
 
 /**
  * removes hentry class from post_class
-*/
+ */
 function remove_hentry( $classes ) {
   $classes = array_diff($classes, array('hentry'));
   return $classes;
@@ -117,9 +116,8 @@ add_filter( 'post_class', 'remove_hentry' );
 
 /**
  * removes rel="category tag" of the category list
- * @link josephleedy.me/blog/make-wordpress-category-list-valid-by-removing-rel-attribute/
-*/
-
+ * @link http://josephleedy.me/blog/make-wordpress-category-list-valid-by-removing-rel-attribute/
+ */
 function satus_remove_category_list_rel($output)
 {
   $output = str_replace(' rel="category tag"', ' rel="tag"', $output);
@@ -130,7 +128,7 @@ add_filter('the_category', 'satus_remove_category_list_rel');
 
 /**
  * remove CSS from recent comments widget
-*/
+ */
 function satus_remove_recent_comments_style() {
   global $wp_widget_factory;
   if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
@@ -139,9 +137,9 @@ function satus_remove_recent_comments_style() {
 }
 
 /**
-* first and last classes for widgets
-* @link wordpress.org/support/topic/how-to-first-and-last-css-classes-for-sidebar-widgets
-*/
+ * first and last classes for widgets
+ * @link http://wordpress.org/support/topic/how-to-first-and-last-css-classes-for-sidebar-widgets
+ */
 function satus_widget_first_last_classes($params) {
   global $my_widget_num;
   $this_id = $params[0]['id'];
@@ -284,7 +282,7 @@ if (GALLERY) {
 
 /**
  * Custom Walker that adds menu-item-slug (menu item title) and description
-*/
+ */
 class Satus_Nav_Walker extends Walker_Nav_Menu {
   function start_el(&$output, $item, $depth, $args) {
     global $wp_query;
@@ -322,9 +320,9 @@ class Satus_Nav_Walker extends Walker_Nav_Menu {
 }
 
 /**
-* Custom walker class for the primary navigation that adds menu-item-slug (menu item title), description and adds items needed for drop down menu
-* inspired from @link github.com/retlehs/roots/
-*/
+ * Custom walker class for the primary navigation that adds menu-item-slug (menu item title), description and adds items needed for drop down menu
+ * inspired from @link https://github.com/retlehs/roots/
+ */
 class Satus_Navbar_Walker extends Walker_Nav_Menu {
   function start_lvl(&$output, $depth) {
     $output .= "\n<ul class=\"dropdown-menu\">\n";

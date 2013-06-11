@@ -2,10 +2,9 @@
 
 /**
  * Satus Configuration and Constants
- * Thanks to Adam Nowak @link codehyperspatial.com
- * The about page and contact page ids are for @link schema.org see typeof body tag towards the end of this file
-*/
-
+ * Thanks to Adam Nowak @link http://codehyperspatial.com
+ * The about page and contact page ids are for @link http://schema.org see typeof body tag towards the end of this file
+ */
 satus_define_constants(array(
   'WP_JQUERY'               => true,                    // enables WordPress' jQuery
   'TOUCH_ICONS'             => true,                    // enables touch icons for mobile devices
@@ -22,7 +21,7 @@ satus_define_constants(array(
   'POST_THUMB_CLASSES'      => 'image thumb post-thumb', // used for index.php's etc. post thumbnails
   'FIGURE_CLASSES'          => 'image',                  // used for inserted images w/caption   
   'FIGCAPTION_CLASSES'      => 'caption',
-  'GALLERY_CLASSES'         => 'wp-gallery',                // used for default wp gallery
+  'GALLERY_CLASSES'         => 'wp-gallery',             // used for default wp gallery
   'GALLERY_ITEM_CLASSES'    => 'image thumb',
   'GALLERY_CAPTION_CLASSES' => 'caption',
   'ABOUT_PAGE_ID'           => '',                       // about us page id for itemscope tag
@@ -41,7 +40,6 @@ function satus_define_constants($constants){
  * Define which pages, etc. shouldn't have the sidebar
  * @link codex.wordpress.org/Conditional_Tags
 */
-
 function satus_display_sidebar() {
   if (
     is_404() ||
@@ -57,14 +55,12 @@ function satus_display_sidebar() {
 /**
  * Set the content width based on the theme's design and stylesheet.
 */
-
 if ( ! isset( $content_width ) )
   $content_width = 1170; /* pixels */
 
 /**
- * Opening body tag with @link rdfa lite 1.1 and schema.org php conditional
+ * Opening body tag with rdfa lite 1.1 and schema.org php conditional
 */
-
 if(!function_exists('satus_typeof')):
 function satus_typeof(){
   if ( ABOUT_PAGE_ID !== '' && is_page( ABOUT_PAGE_ID ) ) echo 'vocab="http://schema.org/" typeof="AboutPage"';
@@ -79,9 +75,8 @@ endif;
 
 /**
 * Change Password Protected Form
-* @link wp.tutsplus.com/tutorials/customizing-and-styling-the-password-protected-form/
+* @link http://wp.tutsplus.com/tutorials/customizing-and-styling-the-password-protected-form/
 */
-
 add_filter( 'the_password_form', 'satus_password_form' );  
 function satus_password_form() {  
   global $post;  

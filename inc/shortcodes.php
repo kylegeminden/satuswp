@@ -3,7 +3,7 @@
 /**
  * Add iframes, image maps, html etc, via custom fields and this shortcode [field name="name-of-your-custom-field"]
  * Unfortunately I can't remember who to give credit for this one
-*/
+ */
 function satus_field_func($atts) {
   global $post;
   $name = $atts['name'];
@@ -15,9 +15,10 @@ add_shortcode('field', 'satus_field_func');
 /**
  * Use the following YouTube and Vimeo shortcodes for flexible videos
  * [youtube id="YE7VzlLtp-4" ratio="widescreen"] [vimeo id="6284199" ratio="widescreen"]
- * @link alistapart.com/articles/creating-intrinsic-ratios-for-video/ 
- * @link graphicbeacon.com/web-design-development/embed-an-iframe-into-a-post-or-page-without-using-a-plugin/
-*/
+ * @link http://alistapart.com/articles/creating-intrinsic-ratios-for-video/ 
+ * @link http://graphicbeacon.com/web-design-development/embed-an-iframe-into-a-post-or-page-without-using-a-plugin/
+ */
+
 // YouTube
 function satus_youtube_shortcode($atts) {
 extract(shortcode_atts(array( 
@@ -42,7 +43,7 @@ add_shortcode('vimeo','satus_vimeo_shortcode');
  * This allows for adding custom wrapper html tags with attributes
  * [html tag="article" atr='class="cool"']
  * [close-html tag="article"]
-*/
+ */
 function satus_html($atts) {
   extract(shortcode_atts(array(
     'tag' => '',
@@ -66,7 +67,7 @@ add_shortcode('close-html','satus_close_html');
  * [end-row]
  * [column width='1of3' class='test']
  * [end-column]
-*/
+ */
 function satus_row($atts) {
   extract(shortcode_atts(array(
     'class' => ''
@@ -96,9 +97,9 @@ add_shortcode('end-column','satus_end_column');
 
 /**
  * Shortcode Select Box
- * @link wpsnipp.com/index.php/functions-php/add-custom-media_buttons-for-shortcode-selection/
+ * @link http://wpsnipp.com/index.php/functions-php/add-custom-media_buttons-for-shortcode-selection/
  * @link http://wpsnipp.com/index.php/functions-php/update-automatically-create-media_buttons-for-shortcode-selection/
-*/
+ */
 add_action('media_buttons','add_satus_sc_select',11);
 function add_satus_sc_select(){
   echo '&nbsp;<select id="sc_select">

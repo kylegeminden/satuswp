@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Modified from @link gist.github.com/2567027
+ * Modified from @link https://gist.github.com/sanchothefat/2567027
  * Add support for non IE conditional comments
  *
  * Usage:
@@ -10,7 +10,6 @@
  *
  * $GLOBALS['wp_styles']->add_data( 'my-handle', 'notie_conditional', 'gte IE 9' );
  */
-
 add_filter( 'style_loader_tag', 'style_loader_tag_ccs', 10, 2 );
 function style_loader_tag_ccs( $tag, $handle ) {
   global $wp_styles;
@@ -24,12 +23,12 @@ function style_loader_tag_ccs( $tag, $handle ) {
 }
 
 /** 
- * @link wp.smashingmagazine.com/2011/10/12/developers-guide-conflict-free-javascript-css-wordpress/
-*/
+ * @link http://wp.smashingmagazine.com/2011/10/12/developers-guide-conflict-free-javascript-css-wordpress/
+ */
 
 /**
  * Register theme styles
-*/
+ */
 function satus_register_styles(){
   wp_register_style(
     'satus-main-css', //handle
@@ -58,7 +57,7 @@ add_action('init', 'satus_register_styles');
 
 /**
  * Enqueue theme scripts
-*/
+ */
 function satus_enqueue_styles(){
   if (!is_admin()):
     wp_enqueue_style('satus-main-css');
@@ -79,7 +78,7 @@ endif;
 
 /**
  * Register theme scripts
-*/
+ */
 function satus_register_scripts() {
   wp_register_script(
     'satus-plugins-js',
@@ -100,7 +99,7 @@ add_action('init', 'satus_register_scripts');
 
 /**
  * Enqueue theme scripts
-*/
+ */
 function satus_enqueue_scripts(){
   if (!is_admin()):
     wp_enqueue_script('satus-plugins-js');

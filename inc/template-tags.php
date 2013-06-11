@@ -2,12 +2,11 @@
 
 /**
  * The satus_typeof tag is located in config for easy modification
-*/
+ */
 
 /**
  * #main and #sidebar CSS classes
-*/
-
+ */
 function satus_main_class() {
   if (satus_display_sidebar()) {
     $class = MAIN_CLASSES;
@@ -21,10 +20,9 @@ function satus_sidebar_class() {
 }
 
 /*
-* Truncate title on recent posts widget etc.,
-* use the following tag in desired template file()s to shorten title length <?php satus_short_title(20) ?>
-*/
-
+ * Truncate title on recent posts widget etc.,
+ * use the following tag in desired template file()s to shorten title length <?php satus_short_title(20) ?>
+ */
 function satus_short_title($limit = 40){
   $title = get_the_title();
   $pad = "&hellip;";
@@ -38,8 +36,7 @@ function satus_short_title($limit = 40){
 
 /*
  * Change default excerpt length - this is use to set a large number for the excerpt length that way the following satus excerpt can make multiple lengths in multiple locations
-*/
-
+ */
 function satus_default_excerpt_length($length) {
   return 500;
 }
@@ -47,11 +44,11 @@ add_filter('excerpt_length', 'satus_default_excerpt_length');
 
 /**
  * Begin Custom Excerpts Lengths 
- * Thanks to Adam Nowak @link codehyperspatial.com
+ * Thanks to Adam Nowak @link http://codehyperspatial.com
  * use the following tag in desired template file(s)
  * <?php satus_the_excerpt(40,'characters'); ?>
  * (can remove ,'characters' if words rather than characters desired
-*/
+  */
 
 // Limit String Characters
 function satus_limit_string_chars($string,$char_limit)
@@ -90,8 +87,7 @@ function satus_the_excerpt($max_length='',$limit_type='words',$read_more=true,$c
 /**
  * Checks to see if page is grandparent call with is_tree(id) in template file(s)
  * Unfortunately I can't remember who to give credit for this one
-*/
-
+ */
 function is_tree($pid) {      // $pid = The ID of the page we're looking for pages underneath
   global $post;         // load details about this page
   $anc = get_post_ancestors( $post->ID );
@@ -107,9 +103,8 @@ function is_tree($pid) {      // $pid = The ID of the page we're looking for pag
 };
 
 /**
- * Post Pagination @link bavotasan.com/2012/a-better-wp_link_pages-for-wordpress/
-*/
-
+ * Post Pagination @link http://bavotasan.com/2012/a-better-wp_link_pages-for-wordpress/
+ */
 function satus_paged_nav( $args = '' ) {
   $defaults = array(
     'before' => '<nav class="paged-nav pagination"><h2 class="visuallyhidden">' . __('Pagination Navigation', 'satus') . '</h2>', 
@@ -166,9 +161,8 @@ function satus_paged_nav( $args = '' ) {
 }
 
 /**
- * Posts Pagination @link wp-snippets.com/pagination-without-plugin/
-*/
-
+ * Posts Pagination @link http://wp-snippets.com/pagination-without-plugin/
+ */
 function satus_posts_nav($prev = '&larr;', $next = '&rarr;') {
   global $wp_query, $wp_rewrite;
   $wp_query->query_vars['paged'] > 1 ? $current = $wp_query->query_vars['paged'] : $current = 1;
