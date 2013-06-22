@@ -12,6 +12,7 @@ satus_define_constants(array(
   'GALLERY'                 => true,                    // enables gallery rewrite to ul
   'CAPTION'                 => true,                    // enables images w/caption rewrite to fig and figcaption
   'EXCERPT_READ_MORE'       => true,                    
+  'EXCERPT_READ_MORE_TEXT'  => 'read&nbsp;more',                    
   'EXCERPT_CLASS'           => 'excerpt',                
   'POSTS_NAV_PREV'          => '&larr;',                // index.php, etc. posts navigation indicator and comments navigation
   'POSTS_NAV_NEXT'          => '&rarr;',

@@ -46,7 +46,7 @@ add_filter('excerpt_length', 'satus_default_excerpt_length');
  * Begin Custom Excerpts Lengths 
  * Thanks to Adam Nowak @link http://codehyperspatial.com
  * use the following tag in desired template file(s)
- * <?php satus_the_excerpt(40,'characters'); ?>
+ * <?php satus_the_excerpt(40,'characters', true, 'read&nbsp;more', 'excerpt'); ?>
  * (can remove ,'characters' if words rather than characters desired
   */
 
@@ -65,7 +65,7 @@ function satus_limit_string_words($string,$word_limit)
   return implode(' ', $words);
 }
 //The Excerpt
-function satus_the_excerpt($max_length='',$limit_type='words',$read_more=true,$class='excerpt'){
+function satus_the_excerpt($max_length='',$limit_type='words',$read_more=true,$read_more_txt='read&nbsp;more',$class='excerpt'){
   if($max_length == ''){ $shorten_post_value = get_option('shorten_post_value'); }
   else $shorten_post_value = $max_length;
   $shortened_content = get_the_excerpt();
@@ -79,7 +79,7 @@ function satus_the_excerpt($max_length='',$limit_type='words',$read_more=true,$c
       echo '<p class="'.$class.'">' . satus_limit_string_words($shortened_content,$shorten_post_value) . '&hellip;';
       }
     if($read_more) { ?>
-    <a href="<?php the_permalink(); ?>" class="read-more" title="Read Full Post" rel="bookmark"><?php _e('read&nbsp;more', 'satus'); ?></a></p>
+    <a href="<?php the_permalink(); ?>" class="read-more" title="Read Full Post" rel="bookmark"><?php echo $read_more_txt; ?></a></p>
     <?php }
   }
 }

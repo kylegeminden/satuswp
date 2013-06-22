@@ -104,7 +104,7 @@
             <?php the_post_thumbnail('thumbnail', 'property=image'); ?>
           </a>
         <?php endif; ?>
-        <?php satus_the_excerpt( POST_EXCERPT_LENGTH, 'words', EXCERPT_READ_MORE, EXCERPT_CLASS ); ?>
+        <?php satus_the_excerpt( POST_EXCERPT_LENGTH, 'words', EXCERPT_READ_MORE, EXCERPT_READ_MORE_TEXT, EXCERPT_CLASS ); ?>
       </div>
     </article>
 
