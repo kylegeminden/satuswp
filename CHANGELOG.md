@@ -1,5 +1,20 @@
 ### HEAD
 
+### 2.5.0 June 21, 2013
+
+* Changed id's to classes where possible.
+* Cleaned up code comments.
+* Made `templates/content-author.php` and referenced it in `author.php`.
+* Made read more in `<?php satus_the_excerpt(); ?>` optional and added the ability to add or change class names.
+* Made comment navigation accept the posts navigation symbols from `inc/config.php`.
+* Made `inc/init.php` and moved all inital theme functions from `functions.php` to it.
+* Made nice search optional in `inc/config.php`.
+* Made gallery and images with captions rewrites optional in `inc/config.php`.
+* Changed comment for to default comment form to avoid issues with plugins.
+* Fixed document outline for `templates/comments.php` when there are no comments.
+
+
+
 ### 2.0.1 March 28, 2013
 
 * Class name changes for posts.
