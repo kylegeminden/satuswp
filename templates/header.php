@@ -2,12 +2,12 @@
   <div class="row">
     <div class="column width1of1">
       
-      <hgroup class="brand">
+      <div class="brand">
         <h1 class="site-title">
           <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
         </h1>
-        <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
-      </hgroup>
+        <p class="h2 site-description"><?php bloginfo( 'description' ); ?></p>
+      </div>
       
       <nav class="primary-nav" role="navigation">
         <h2 class="visuallyhidden"><?php _e( 'Primary Navigation', 'satus' ); ?></h2>
