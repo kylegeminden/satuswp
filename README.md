@@ -62,11 +62,7 @@ See `inc/config.php` to enable and disable theme functionality, define constants
 
 ## Troubleshooting
 
-The only items that I see could cause an issue are in `comments.php` and in `config.php`.
-
-In `comments.php` it uses a custom HTML 5 comment form and not the default WordPress `comment_form()` function and this can cause issues with plugins that modify the default function.
-
-In `config.php` the post protected form output is modified and this could potentially cause an issue on a WordPress update but I would think that is highly unlikely to happen.
+The only item that I see that could cause an issue is in `config.php`. The post protected form output is modified and this could potentially cause an issue on a WordPress update but I would think that is highly unlikely to happen.
 
 ## Project Information
 
