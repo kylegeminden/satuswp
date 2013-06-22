@@ -11,6 +11,7 @@ satus_define_constants(array(
   'NICE_SEARCH'             => true,
   'GALLERY'                 => true,                    // enables gallery rewrite to ul
   'CAPTION'                 => true,                    // enables images w/caption rewrite to fig and figcaption
+  'COMMENT_FORM'            => true,                    // enables the custom html5 comment form
   'EXCERPT_READ_MORE'       => true,                    
   'EXCERPT_READ_MORE_TEXT'  => 'read&nbsp;more',                    
   'EXCERPT_CLASS'           => 'excerpt',                

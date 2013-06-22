@@ -153,25 +153,35 @@
   clear: both;
 }
 
-#commentform {
-  .form-allowed-tags code {
-    display: block;
-  }
-  .required {
-    color: #a72c2c;
-  }
+#commentform .form-allowed-tags code {
+  display: block;
+}
+
+#commentform .required,
+/* custom html5 form */
+.comment-form .required {
+  color: #a72c2c;
 }
 
 .comment-form-url input,
 .comment-form-email input,
-.comment-form-author input {
+.comment-form-author input,
+/* custom html5 form */
+.comment-form .author,
+.comment-form .email,
+.comment-form .url {
   max-width: 350px;
   width: 100%;
 }
-.comment-form-comment textarea {
+.comment-form-comment textarea,
+/* custom html5 form */
+.comment-form .comment {
   max-width: 450px;
   width: 100%;
 }
+
+/* custom html5 comment form */
+
 
 /* == author == */
 

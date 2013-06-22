@@ -100,8 +100,28 @@
       <p><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'satus'), wp_login_url(get_permalink())); ?></p>
 
     <?php else : ?>
-
-      <?php comment_form(); ?>
+      
+      <?php if (COMMENT_FORM) : ?>
+        <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="comment-form" class="comment-form">
+          <?php if (is_user_logged_in()) : ?>
+            <p><?php printf(__('Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', 'satus'), get_option('siteurl'), $user_identity); ?> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php __('Log out of this account', 'satus'); ?>"><?php _e('Log out &raquo;', 'satus'); ?></a></p>
+          <?php else : ?>
+            <label for="author"><?php _e('Name', 'satus'); if ($req) _e(' <span class="required">*</span>', 'satus'); ?></label>
+            <input class="author" id="author" type="text" name="author" value="<?php echo esc_attr($comment_author); ?>" size="30" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> <?php if ($req) echo "required"; ?>>
+            <label for="email"><?php _e('Email <small>(will not be published)</small>', 'satus'); if ($req) _e(' <span class="required">*</span>', 'satus'); ?></label>
+            <input class="email" id="email" type="email" name="email" value="<?php echo esc_attr($comment_author_email); ?>" size="30" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?>  <?php if ($req) echo "required"; ?>>
+            <label for="url"><?php _e('Website', 'satus'); ?></label>
+            <input class="url" id="url" type="url" name="url" value="<?php echo esc_attr($comment_author_url); ?>" size="30" tabindex="3">
+          <?php endif; ?>
+          <label for="comment"><?php _e('Comment', 'satus'); if ($req) _e(' <span class="required">*</span>', 'satus'); ?></label>
+          <textarea class="comment" id="comment" name="comment"  cols="45" rows="8" tabindex="4" <?php if ($req) echo "aria-required='true'"; ?> <?php if ($req) echo "required"; ?>></textarea>
+          <p><input class="button" id="submit" type="submit" name="submit" tabindex="5" value="<?php _e('Submit Comment', 'satus'); ?>"></p>
+          <?php comment_id_fields(); ?>
+          <?php do_action('comment_form', $post->ID); ?>
+        </form>
+      <?php else : ?>
+        <?php comment_form(); ?>
+      <?php endif; ?>
 
     <?php endif; // if registration required and not logged in ?>
     
