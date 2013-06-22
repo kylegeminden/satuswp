@@ -45,7 +45,7 @@ See `inc/config.php` to enable and disable theme functionality, define constants
 ## Template Tags
 
 * `satus_short_title(20)` Use to truncate the title if needed.
-* `satus_the_excerpt(40,'characters')` `satus_the_excerpt(40)` Allows for multiple excerpt lengths in theme using either words or characters.
+* `satus_the_excerpt(40,'characters', true, 'read&nbsp;more', 'excerpt')` Allows for multiple excerpt lengths in theme using either words or characters, optional read more link, ability to change read more text and ability to change the excerpt class.
 * `is_tree(id)` Checks to see if pages are children or grand-children of the entered id.
 
 ## Shortcodes
