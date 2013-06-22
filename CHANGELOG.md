@@ -5,7 +5,7 @@
 * Changed id's to classes where possible.
 * Cleaned up code comments.
 * Made `templates/content-author.php` and referenced it in `author.php`.
-* Made read more in `<?php satus_the_excerpt(); ?>` optional and added the ability to add or change class names.
+* Made read more in `satus_the_excerpt()` optional, added the ability to change the read more text and add or change class names.
 * Made comment navigation accept the posts navigation symbols from `inc/config.php`.
 * Made `inc/init.php` and moved all inital theme functions from `functions.php` to it.
 * Made nice search optional in `inc/config.php`.
