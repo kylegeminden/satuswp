@@ -1,6 +1,6 @@
 ### HEAD
 
-### 2.5.0 June 21, 2013
+### 2.5.0 June 22, 2013
 
 * Changed id's to classes where possible.
 * Cleaned up code comments.
@@ -10,8 +10,9 @@
 * Made `inc/init.php` and moved all inital theme functions from `functions.php` to it.
 * Made nice search optional in `inc/config.php`.
 * Made gallery and images with captions rewrites optional in `inc/config.php`.
-* Changed comment for to default comment form to avoid issues with plugins.
+* Custom comment form is now optional to avoid issues with plugins.
 * Fixed document outline for `templates/comments.php` when there are no comments.
+* Removed `hgroup` from `head` as it's no longer valid.
 
 
 
