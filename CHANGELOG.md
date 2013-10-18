@@ -1,4 +1,10 @@
-### HEAD
+### HEAD October 17, 2013
+
+* Removed `satus_get_search_form()`, `Satus_Nav_Walker` and `Satus_Navbar_Waker` function from `cleanup.php`.
+* Removed reference to walker class in `header.php`.
+* Deleted `sidebar.php` as it was no longer needed and adjusted `wrapper.php` accordingly.
+* Added `searchform.php` file in root of theme and referenced the template part.
+
 
 ### 2.5.0 June 22, 2013
 
@@ -32,7 +38,7 @@
 * Added changes from Satus HTML 2.0.0.
 * Updated `enqueue.php` to load `main.css` and `main-ie.css`.
 * Added `content-home-page.php` and modified `front-page.php` to load that if a page is selected to display for the front page and it also switches to full width.
-* Modified the `satus_display_sidebar()` function to go full width on the front page if a page is selected to display. 
+* Modified the `satus_display_sidebar()` function to go full width on the front page if a page is selected to display.
 * Updated galley and caption in `cleanup.php` to that from [roots](https://github.com/retlehs/roots/blob/master/lib/cleanup.php) but kept in the ability to add classes via `config.php`.
 * Simplified editor styles in `editor.less`.
 
