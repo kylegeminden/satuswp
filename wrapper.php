@@ -15,11 +15,11 @@
       <?php include satus_template_path(); ?>
     </div>
     <!-- /#main -->
-    
+
     <?php if(satus_display_sidebar()) : ?>
       <aside class="sidebar <?php echo satus_sidebar_class(); ?>" role="complementary">
         <h2 class="visuallyhidden"><?php _e( 'Sidebar', 'satus' ); ?></h2>
-        <?php get_template_part('templates/sidebar'); ?>
+        <?php dynamic_sidebar( 'sidebar-widget-area' ); ?>
       </aside>
       <!-- /#sidebar -->
     <?php endif; ?>
